@@ -1,10 +1,14 @@
-= Class DSL
+= JavaScript DSL for Classical Inheritance
 
-This files provides a dsl for the following design patterns: inheritance, interface, module.
+This files provides a DSL for the following design patterns: 
 
-It also provides a dsl for class creation.
+* inheritance
+* interface
+* module
 
-The phylosophy is that it should not try to emulate other languages, and it preserves the javascript good parts, but with a nicer syntax to create classes that ensure interfaces and include reusable functionality as modules.
+It also provides a DSL for class creation.
+
+The phylosophy is that it should not try to emulate other languages, and it preserves the JavaScript good parts, but with a nicer syntax to create classes that ensure interfaces and include reusable functionality as modules.
 
 === Usage
 
