@@ -1,0 +1,42 @@
+= Class DSL
+
+This files provides a dsl for the following design patterns: inheritance, interface, module.
+
+It also provides a dsl for class creation.
+
+The phylosophy is that it should not try to emulate other languages, and it preserves the javascript good parts, but with a nicer syntax to create classes that ensure interfaces and include reusable functionality as modules.
+
+=== Usage
+
+	Interface('Editable')({
+	    constructor: ['x'],
+	    prototype: ['x']
+	});
+
+	Module('Composition')({
+	    y: 5,
+	    prototype: {
+	        z: 3
+	    }
+	});
+
+	Module('Other')({
+	    a: 5,
+	    prototype: {
+	        b: 3
+	    }
+	});
+
+	Class('Overlay').inherits(Widget).ensures(Editable).includes(Composition, Other)({
+	    html: '<div></div>',
+	    prototype: {
+	        initialize: function(element) {
+	            if (!element) {
+	                element = document.createElement('div');
+	                element.innerHTML = 'hola';
+	                document.body.appendChild(element);
+	            }
+	        },
+	        b: 5
+	    }
+	});
