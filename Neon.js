@@ -151,7 +151,9 @@ var Class = function Class(classNameOrNameSpace, className){
 	classFactory.inherits = function(superClass){
 		var i, inheritedClass;
 		newClass.superClass            = superClass;
-		superClass.__descendants.push(newClass);
+		if(superClass.hasOwnProperty('__descendants')){
+			superClass.__descendants.push(newClass);
+		}
 		inheritedClass                 = function(){};
 		inheritedClass.prototype       = superClass.prototype;
 		newClass.prototype             = new inheritedClass();
