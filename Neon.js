@@ -34,7 +34,7 @@
 * Class('Overlay').inherits(Widget).ensures(Editable).includes(Composition, Other)({
 * 	html : '<div></div>',
 * 	prototype : {
-* 		initializer : function (element){
+* 		init : function (element){
 * 			if(!element){
 * 				element = document.createElement('div');
 * 				element.innerHTML = 'hola';
@@ -79,8 +79,8 @@ var Class = function Class(classNameOrNameSpace, className){
 	(classNameOrNameSpace) ? classNameOrNameSpace : 'class' + Math.random().toString();
 
 	newClass                   = function(){
-		if(this.initializer){
-			this.initializer.apply(this, arguments);
+		if(this.init){
+			this.init.apply(this, arguments);
 		}
 	};
 
@@ -91,7 +91,11 @@ var Class = function Class(classNameOrNameSpace, className){
 	newClass.include                 = function(module){
 		var property;
 		for(property in module){
-			if(module.hasOwnProperty(property) && property != 'prototype' && property != 'constructor' && property != 'isModule' && property != 'superClass'){
+			if(module.hasOwnProperty(property) 
+			&& property != 'prototype' 
+			&& property != 'constructor' 
+			&& property != 'isModule' 
+			&& property != 'superClass'){
 				newClass[property] = module[property];
 			}
 		}
@@ -134,7 +138,8 @@ var Class = function Class(classNameOrNameSpace, className){
 				}
 			}
 
-			if(newClass.__implementedInterfaces[i].hasOwnProperty('prototype') && newClass.__implementedInterfaces[i].prototype){
+			if(newClass.__implementedInterfaces[i].hasOwnProperty('prototype') 
+			&& newClass.__implementedInterfaces[i].prototype){
 				for(j = 0, jl = newClass.__implementedInterfaces[i].prototype.length; j < jl; j++){
 					if(!newClass.prototype[newClass.__implementedInterfaces[i].prototype[j]]){
 						alert('must implement prototype ' + newClass.__implementedInterfaces[i].name);
@@ -160,7 +165,11 @@ var Class = function Class(classNameOrNameSpace, className){
 		newClass.prototype.constructor = newClass;
 
 		for(i in superClass){
-			if(superClass.hasOwnProperty(i) && i != 'prototype' && i !== 'className' && i !== 'superClass' && i != '__descendants'){
+			if(superClass.hasOwnProperty(i) 
+			&& i != 'prototype' 
+			&& i !== 'className' 
+			&& i !== 'superClass' 
+			&& i != '__descendants'){
 				newClass[i] = superClass[i];
 			}
 		}
