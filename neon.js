@@ -45,8 +45,7 @@
 * 	}
 * });
 */
-
-var Interface = function Interface(nameOrNameSpace, name) {
+var Interface = function Interface(nameOrNameSpace, name){
 	var nameSpace, interfaceName, factory;
 	nameSpace                  = (nameOrNameSpace && name) ? nameOrNameSpace : this;
 	interfaceName              = (nameOrNameSpace && name) ? name :
@@ -60,7 +59,7 @@ var Interface = function Interface(nameOrNameSpace, name) {
 	return factory;
 };
 
-var Module = function Module(nameOrNameSpace, name) {
+var Module = function Module(nameOrNameSpace, name){
 	var nameSpace, moduleName, factory;
 	nameSpace               = (nameOrNameSpace && name) ? nameOrNameSpace : this;
 	moduleName              = (nameOrNameSpace && name) ? name :
@@ -68,21 +67,19 @@ var Module = function Module(nameOrNameSpace, name) {
 	factory = function(definition){
 		definition.isModule      = true;
 		nameSpace[moduleName] = definition;
-		
 		return nameSpace[moduleName];
 	};
-	
 	return factory;
 };
 
-var Class = function Class(classNameOrNameSpace, className) {
+var Class = function Class(classNameOrNameSpace, className){
 	var nameSpace, newClass, classFactory;
 	nameSpace                  = (classNameOrNameSpace && className) ? classNameOrNameSpace : this;
 	className                  = (classNameOrNameSpace && className) ? className :
 	(classNameOrNameSpace) ? classNameOrNameSpace : 'class' + Math.random().toString();
 
-	newClass                   = function () {
-		if (this.init) {
+	newClass                   = function(){
+		if(this.init){
 			this.init.apply(this, arguments);
 		}
 	};
@@ -91,52 +88,35 @@ var Class = function Class(classNameOrNameSpace, className) {
 	newClass.__implementedInterfaces = [];
 	newClass.__includedModules       = [];
 	newClass.className               = className;
-	newClass.include                 = function(module) {
+	newClass.include                 = function(module){
 		var property;
-		for (property in module) {
-			if (module.hasOwnProperty(property) 
-			&& property !== 'prototype' 
-			&& property !== 'constructor' 
-			&& property !== 'isModule' 
-			&& property !== 'superClass') {
+		for(property in module){
+			if(module.hasOwnProperty(property) 
+			&& property != 'prototype' 
+			&& property != 'constructor' 
+			&& property != 'isModule' 
+			&& property != 'superClass'){
 				newClass[property] = module[property];
 			}
 		}
 
-		if (module.hasOwnProperty('prototype') && module.prototype) {
-			for (property in module.prototype) {
-				if  (module.prototype.hasOwnProperty(property)) {
+		if(module.hasOwnProperty('prototype') && module.prototype){
+			for(property in module.prototype){
+				if(module.prototype.hasOwnProperty(property)){
 					newClass.prototype[property] = module.prototype[property];
 				}
 			}
-		}
-		else {
+		}else{
 			module.prototype = {};
 		}
 
 		newClass.__includedModules.push(module);
-		
-		return this;
-	};
-	
-	newClass.extend = function(object) {
-	    var property;
-		for (property in module) {
-			if (module.hasOwnProperty(property) 
-			&& property !== 'prototype' 
-			&& property !== 'constructor' 
-			&& property !== 'isModule' 
-			&& property !== 'superClass') {
-				newClass[property] = module[property];
-			}
-		}
-		
 		return this;
 	};
 
-	classFactory = function (classDefinition) {
+	classFactory = function(classDefinition){
 		var i, il, j, jl, property, classPrototype = classDefinition.prototype;
-		if (classPrototype) {
+		if(classPrototype){
 			for(property in classPrototype){
 				if(classPrototype.hasOwnProperty(property)){
 					newClass.prototype[property] = classPrototype[property];
@@ -173,7 +153,7 @@ var Class = function Class(classNameOrNameSpace, className) {
 		return newClass;
 	};
 
-	classFactory.inherits = function(superClass) {
+	classFactory.inherits = function(superClass){
 		var i, inheritedClass;
 		newClass.superClass            = superClass;
 		if(superClass.hasOwnProperty('__descendants')){
@@ -184,12 +164,12 @@ var Class = function Class(classNameOrNameSpace, className) {
 		newClass.prototype             = new inheritedClass();
 		newClass.prototype.constructor = newClass;
 
-		for (i in superClass) {
+		for(i in superClass){
 			if(superClass.hasOwnProperty(i) 
-			&& i !== 'prototype' 
+			&& i != 'prototype' 
 			&& i !== 'className' 
 			&& i !== 'superClass' 
-			&& i !== '__descendants'){
+			&& i != '__descendants'){
 				newClass[i] = superClass[i];
 			}
 		}
@@ -198,7 +178,7 @@ var Class = function Class(classNameOrNameSpace, className) {
 		return this;
 	};
 
-	classFactory.ensures = function(interfaces) {
+	classFactory.ensures = function(interfaces){
 		for(var i = 0; i < arguments.length; i++){
 			newClass.__implementedInterfaces.push(arguments[i]);
 		}
@@ -206,7 +186,7 @@ var Class = function Class(classNameOrNameSpace, className) {
 		return classFactory;
 	};
 
-	classFactory.includes = function () {
+	classFactory.includes = function(){
 		for(var i = 0; i < arguments.length; i++){
 			newClass.include(arguments[i]);
 		}
