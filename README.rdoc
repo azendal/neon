@@ -12,39 +12,39 @@ The phylosophy is that it should not try to emulate other languages, and it pres
 
 === Usage
 
-	Interface('Editable')({
-	    constructor: ['x'],
-	    prototype: ['x']
-	});
-
-	Module('Composition')({
-	    y: 5,
-	    prototype: {
-	        z: 3
-	    }
-	});
-
-	Module('Other')({
-	    a: 5,
-	    prototype: {
-	        b: 3
-	    }
-	});
-
-	Class('Overlay').inherits(Widget).ensures(Editable).includes(Composition, Other)({
-	    html: '<div></div>',
-	    prototype: {
-	        initialize: function(element) {
-	            if (!element) {
-	                element = document.createElement('div');
-	                element.innerHTML = 'hola';
-	                document.body.appendChild(element);
-	            }
-	        },
-	        b: 5
-	    }
-	});
-	
+  Interface('Editable')({
+    constructor : ['x'],
+    prototype   : ['x']
+  });
+  
+  Module('Composition')({
+    y : 5,
+    prototype : {
+      z : 3
+    }
+  });
+  
+  Module('Other')({
+    a : 5,
+    prototype : {
+      b : 3
+    }
+  });
+  
+  Class('Overlay').inherits(Widget).ensures(Editable).includes(Composition, Other)({
+    html : '<div></div>',
+    prototype : {
+      init : function (element){
+        if(!element){
+          element = document.createElement('div');
+          element.innerHTML = 'hola';
+          document.body.appendChild(element);
+        }
+      },
+      b : 5
+    }
+  });
+  
 == License
 
 Copyright (c) 2009 Fernando Trasviña
