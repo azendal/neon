@@ -135,7 +135,7 @@ global.Class = function Class(classNameOrNameSpace, className){
 		for(i = 0, il = newClass.__implementedInterfaces.length; i < il; i++){
 			for(j = 0, jl = newClass.__implementedInterfaces[i].constructor.length; j < jl; j++){
 				if(!newClass[ newClass.__implementedInterfaces[i].constructor[j] ]){
-					alert('must implement static ' + newClass.__implementedInterfaces[i].name);
+					console.log('must implement static ' + newClass.__implementedInterfaces[i].name);
 					break;
 				}
 			}
@@ -144,7 +144,7 @@ global.Class = function Class(classNameOrNameSpace, className){
 			&& newClass.__implementedInterfaces[i].prototype){
 				for(j = 0, jl = newClass.__implementedInterfaces[i].prototype.length; j < jl; j++){
 					if(!newClass.prototype[newClass.__implementedInterfaces[i].prototype[j]]){
-						alert('must implement prototype ' + newClass.__implementedInterfaces[i].name);
+						console.log('must implement prototype ' + newClass.__implementedInterfaces[i].name);
 						break;
 					}
 				}
