@@ -45,7 +45,9 @@
 * 	}
 * });
 */
-var Interface = function Interface(nameOrNameSpace, name){
+(function (global){
+
+global.Interface = function Interface(nameOrNameSpace, name){
 	var nameSpace, interfaceName, factory;
 	nameSpace                  = (nameOrNameSpace && name) ? nameOrNameSpace : this;
 	interfaceName              = (nameOrNameSpace && name) ? name :
@@ -59,7 +61,7 @@ var Interface = function Interface(nameOrNameSpace, name){
 	return factory;
 };
 
-var Module = function Module(nameOrNameSpace, name){
+global.Module = function Module(nameOrNameSpace, name){
 	var nameSpace, moduleName, factory;
 	nameSpace               = (nameOrNameSpace && name) ? nameOrNameSpace : this;
 	moduleName              = (nameOrNameSpace && name) ? name :
@@ -72,7 +74,7 @@ var Module = function Module(nameOrNameSpace, name){
 	return factory;
 };
 
-var Class = function Class(classNameOrNameSpace, className){
+global.Class = function Class(classNameOrNameSpace, className){
 	var nameSpace, newClass, classFactory;
 	nameSpace                  = (classNameOrNameSpace && className) ? classNameOrNameSpace : this;
 	className                  = (classNameOrNameSpace && className) ? className :
@@ -195,3 +197,5 @@ var Class = function Class(classNameOrNameSpace, className){
 
 	return classFactory;
 };
+
+}(typeof window  === 'undefined' ? exports : window));
