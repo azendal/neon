@@ -47,7 +47,9 @@
 */
 (function (global){
 
-global.Interface = function Interface(nameOrNameSpace, name){
+var Neon = {};
+
+Neon.Interface = function Interface(nameOrNameSpace, name){
 	var nameSpace, interfaceName, factory;
 	nameSpace                  = (nameOrNameSpace && name) ? nameOrNameSpace : this;
 	interfaceName              = (nameOrNameSpace && name) ? name :
@@ -61,7 +63,7 @@ global.Interface = function Interface(nameOrNameSpace, name){
 	return factory;
 };
 
-global.Module = function Module(nameOrNameSpace, name){
+Neon.Module = function Module(nameOrNameSpace, name){
 	var nameSpace, moduleName, factory;
 	nameSpace               = (nameOrNameSpace && name) ? nameOrNameSpace : this;
 	moduleName              = (nameOrNameSpace && name) ? name :
@@ -74,7 +76,7 @@ global.Module = function Module(nameOrNameSpace, name){
 	return factory;
 };
 
-global.Class = function Class(classNameOrNameSpace, className){
+Neon.Class = function Class(classNameOrNameSpace, className){
 	var nameSpace, newClass, classFactory;
 	nameSpace                  = (classNameOrNameSpace && className) ? classNameOrNameSpace : this;
 	className                  = (classNameOrNameSpace && className) ? className :
@@ -196,6 +198,22 @@ global.Class = function Class(classNameOrNameSpace, className){
 	};
 
 	return classFactory;
+
 };
 
-}(typeof window  === 'undefined' ? exports : window));
+if (typeof define === 'function') {
+	define(function() {
+		return Neon;
+	});
+} else {
+	if(typeof process !== 'undefined'){
+		global.Neon = Neon; 
+	}else{
+		global.Class     = Neon.Class;
+		global.Module    = Neon.Module;
+		global.Interface = Neon.Interface;
+	}
+}
+
+}(typeof window  !== 'undefined' ? window : (typeof exports  !== 'undefined' ? exports : null) ));
+
