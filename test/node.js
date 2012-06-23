@@ -1,4 +1,4 @@
-var Neon = require('./neon.js').Neon;
+var Neon = require('../neon.js');
 
 console.log(Neon);
 
