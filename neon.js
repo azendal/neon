@@ -207,13 +207,9 @@
             return Neon;
         });
     } else {
-        if (typeof process !== 'undefined') {
-            global.Neon = Neon;
-        } else {
-            global.Class = Neon.Class;
-            global.Module = Neon.Module;
-            global.Interface = Neon.Interface;
-        }
+        global.Class = Neon.Class;
+        global.Module = Neon.Module;
+        global.Interface = Neon.Interface;
     }
 
 }(typeof window !== 'undefined' ? window : (typeof exports !== 'undefined' ? exports : null)));
