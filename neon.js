@@ -1,4 +1,6 @@
 /**
+ * neon.js v1.0.0 http://github.com/azendal/neon
+ *
  * Class DSL
  * This files provides a dsl for the following design patterns:
  * inheritance, interface, module.
@@ -174,6 +176,7 @@
                     && i != 'prototype'
                     && i !== 'className'
                     && i !== 'superClass'
+                    && i !== 'include'
                     && i != '__descendants') {
                     newClass[i] = superClass[i];
                 }
