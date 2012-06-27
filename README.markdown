@@ -1,4 +1,6 @@
-= JavaScript DSL for Classical Inheritance
+= Neon
+
+== JavaScript DSL for Classical Inheritance
 
 This files provides a DSL for the following design patterns: 
 
@@ -6,45 +8,46 @@ This files provides a DSL for the following design patterns:
 * interface
 * module
 
-It also provides a DSL for class creation.
+Neon packs a DSL for Class creation, that helps in making programs following an object oriented design.
 
-The phylosophy is that it should not try to emulate other languages, and it preserves the JavaScript good parts, but with a nicer syntax to create classes that ensure interfaces and include reusable functionality as modules.
+The philosophy is that it should not try to emulate other languages, so it preserves the JavaScript good parts,
+but with a nicer syntax to create classes that ensure interfaces and include reusable functionality as modules.
 
 === Usage
 
-  Interface('Editable')({
-    constructor : ['x'],
-    prototype   : ['x']
-  });
-  
-  Module('Composition')({
-    y : 5,
-    prototype : {
-      z : 3
-    }
-  });
-  
-  Module('Other')({
-    a : 5,
-    prototype : {
-      b : 3
-    }
-  });
-  
-  Class('Overlay').inherits(Widget).ensures(Editable).includes(Composition, Other)({
-    html : '<div></div>',
-    prototype : {
-      init : function (element){
-        if(!element){
-          element = document.createElement('div');
-          element.innerHTML = 'hola';
-          document.body.appendChild(element);
+    Interface('Editable')({
+        constructor : ['x'],
+        prototype   : ['x']
+    });
+
+    Module('Composition')({
+        y : 5,
+        prototype : {
+            z : 3
         }
-      },
-      b : 5
-    }
-  });
-  
+    });
+
+    Module('Other')({
+        a : 5,
+        prototype : {
+            b : 3
+        }
+    });
+
+    Class('Overlay').inherits(Widget).ensures(Editable).includes(Composition, Other)({
+        html : '<div></div>',
+        prototype : {
+            init : function (element){
+                if(!element){
+                    element = document.createElement('div');
+                    element.innerHTML = 'hello';
+                    document.body.appendChild(element);
+                }
+            },
+            b : 5
+        }
+    });
+
 == License
 
 Copyright (c) 2009 Fernando Trasviña
