@@ -66,17 +66,82 @@
     };
 
     Neon.Module = function Module(nameOrNameSpace, name) {
-        var nameSpace, moduleName, factory;
-        nameSpace = (nameOrNameSpace && name) ? nameOrNameSpace : this;
-        moduleName = (nameOrNameSpace && name) ? name :
-            (nameOrNameSpace) ? nameOrNameSpace : 'module' + Math.random().toString();
-        factory = function(definition) {
-            definition.isModule = true;
-            nameSpace[moduleName] = definition;
+        var nameSpace, moduleName, factory, newModule;
+        
+        nameSpace               = (nameOrNameSpace && name) ? nameOrNameSpace : this;
+        moduleName              = (nameOrNameSpace && name) ? name :
+        (nameOrNameSpace) ? nameOrNameSpace : 'module' + Math.random().toString();
+        
+        newModule               = {
+            moduleName        : moduleName,
+            prototype         : {},
+            __includedModules : [],
+            include           : function(module) {
+                var property;
+                for (property in module) {
+                    if (module.hasOwnProperty(property) 
+                    && property !== 'prototype' 
+                    && property !== 'isModule'
+                    && property !== '__includedModules'
+                    && property !== 'include'
+                    && property !== 'moduleName') {
+                        newModule[property] = module[property];
+                    }
+                }
+                
+                if (module.hasOwnProperty('prototype') && module.prototype) {
+                    for (property in module.prototype) {
+                        if  (module.prototype.hasOwnProperty(property)) {
+                            newModule.prototype[property] = module.prototype[property];
+                        }
+                    }
+                }
+
+                this.__includedModules.push(module);
+                
+                return this;
+            }
+        };
+        
+        
+        factory = function(definition){
+            var property;
+            
+            newModule.isModule      = true;
+            
+            for (property in definition) {
+                if  (definition.hasOwnProperty(property)
+                    && property !== 'prototype' 
+                    && property !== 'isModule'
+                    && property !== '__includedModules'
+                    && property !== 'include'
+                    && property !== 'moduleName') {
+                    newModule[property] = definition[property];
+                }
+            }
+            
+            if (definition.hasOwnProperty('prototype') && definition.prototype) {
+                for (property in definition.prototype) {
+                    if  (definition.prototype.hasOwnProperty(property)) {
+                        newModule.prototype[property] = definition.prototype[property];
+                    }
+                }
+            }
+            
+            nameSpace[moduleName] = newModule;
+            
             return nameSpace[moduleName];
         };
+        
+        factory.includes = function () {
+            for(var i = 0; i < arguments.length; i++){
+                newModule.include(arguments[i]);
+            }
+            return factory;
+        };
+        
         return factory;
-    };
+    };    
 
     Neon.Class = function Class(classNameOrNameSpace, className) {
         var nameSpace, newClass, classFactory;
@@ -101,6 +166,7 @@
                     && property != 'prototype'
                     && property != 'constructor'
                     && property != 'isModule'
+                    && property != 'include'
                     && property != 'superClass') {
                     newClass[property] = module[property];
                 }
@@ -216,4 +282,3 @@
     }
 
 }(typeof window !== 'undefined' ? window : (typeof exports !== 'undefined' ? exports : null)));
-
