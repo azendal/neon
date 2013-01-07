@@ -1,10 +1,10 @@
 {
 	"name"    : "neon",
-	"version" : "1.0.0",
+	"version" : "1.0.1",
 	"main"    : "./neon",
 	"repository": {
 		"type" : "git",
-		"url"  : "https://github.com/Siedrix/neon.git"
+		"url"  : "https://github.com/azendal/neon.git"
 	},
 	"keywords": ["class", "prototype", "inheritance", "oop"]
 }
