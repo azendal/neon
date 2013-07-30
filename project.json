@@ -1,0 +1,12 @@
+{
+  "name"       : "Neon",
+  "lang"       : "js",
+  "author"     : "Azendal",
+  "authorLink" : "http://twitter.com/azendal",
+  "desc"       : "Neon is awesome lorem lorem lorem",
+  "url"        : "http://azendal.github.io/neon",
+  "githubUrl"  : "https://github.com/azendal/neon",
+  "forkColor"  : "orange",
+  "favicon"    : "assets/img/favicon.gif",
+  "icon"       : "assets/img/icon.png"
+}

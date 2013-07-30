@@ -1,0 +1,95 @@
+<h1><i class="icon icon-gears api-icon"></i> API</h1>
+<p>Usage for the <code>Cd</code> context API:</p>
+
+<h3 id="proj">Cd.proj.<i>attrib</i></h3>
+<p>As mentioned before, the <a href="#project-file">project.json file</a> contains the attributes used by the API:</p>
+
+<%= Cd.printCode( function(){ %>
+```django
+<!-- views/header.ejs -->
+<div class="header">
+  <a href="<?= Cd.proj.url ?>">
+    <img class="tm-icon" src="<?= Cd.proj.icon ?>" alt="<?= Cd.proj.name ?>">
+    <div class="name"><?= Cd.proj.name ?><span>.<?= Cd.proj.lang ?></span></div>
+    <div class="description"><?= Cd.proj.desc ?></div>
+  </a>
+</div>
+
+```
+<% }) %>
+
+<h3 id="assets">Assets api</h3>
+<p>As mentioned before, the <a href="#assets-file">assets</a> have an special shortcut api. The assets.json will hold the assets so the api can render them using the Cd api:</p>
+
+<%= Cd.printCode( function(){ %>
+```django
+<head>
+    <meta charset="UTF-8">
+    <title><?= Cd.proj.name ?>.<?= Cd.proj.lang ?></title>
+    <!-- favicon -->
+    <link rel="icon" type="image/gif" href="<?= Cd.proj.favicon+Cd.rId ?>" />
+    <!-- cdn -->
+    <?= Cd.renderCdn() ?>
+    <!-- css -->
+    <?= Cd.renderCss() ?>
+    <!-- fonts -->
+    <?= Cd.renderGoogleFonts() ?>
+    <!-- js -->
+    <?= Cd.renderJs() ?>
+</head>
+
+```
+<% }) %>    
+
+<h3 id="code-blocks">Cd.printCode</h3>
+<p>Cd uses <a target="_blank" href="http://softwaremaniacs.org/soft/highlight/en/">highlight.js</a> to highlight code, you need to pass the code as a <a href="https://help.github.com/articles/github-flavored-markdown">Github flavored Markdown</a> format using any of the <a href="http://softwaremaniacs.org/media/soft/highlight/test.html">supported highlight.js</a> formats:</p>
+
+<div class="code-highlight">
+    <pre>
+        <code>
+&lt;%= Cd.printCode( function(){ %&gt;
+    ```javascript
+    var myCode = 'nice eyebrows!'
+
+    ```
+&lt;% }) %&gt;
+        </code>
+    </pre>
+</div>
+<p>You can customize which theme to use by changing the <code>"vendor/highlight/monokai.css"</code> in the <code>assets.json</code> file fo the one you like.</p>
+
+<h3 id="render">Cd.render</h3>
+<p>The render Api call lets you use partials, so you can separate your views in smaller files The api will look for your partials in the <code>/views</code> folder:</p>
+
+<p><i class="icon icon-file"></i> <strong>views/header.ejs</strong></p>
+<%= Cd.printCode( function(){ %>
+```django
+<span>This is my header!</span>
+
+```
+<% }) %>
+    
+<p><i class="icon icon-file"></i> <strong>views/index.ejs</strong></p>
+<%= Cd.printCode( function(){ %>
+```django
+<div class="header">
+    <?= Cd.render('header.ejs') ?>
+</div>
+
+<!-- Renders -->
+<div class="header"><span>This is my header!</span></div>
+
+```
+<% }) %>
+
+<h3>Cd.noCache</h3>
+<p>Creates a <code>?nocache=1234</code> string containing 4 char hash, this helps if your broser has cache issues for images an assets.</p>
+<%= Cd.printCode( function(){ %>
+```django
+<link rel="icon" type="image/gif" href="<?= Cd.proj.favicon + Cd.rId ?>" />
+
+<!-- Renders -->
+<link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=49d8">
+
+```
+<% }) %>

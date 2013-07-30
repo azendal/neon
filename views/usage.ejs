@@ -1,0 +1,30 @@
+<h2 id="usage">Usage</h2>
+<%= Cd.printCode( function(){ %>
+```javascript
+//1. Get Cadmium files into your gh-pages branch
+> ls
+    .gitignore
+    assets
+    views
+    assets.json
+    package.json
+    project.json
+    cadmium.js
+
+//2. Get the dependencies
+> npm install
+
+//3. Run Cadmium server
+> node cadmium.js
+Cd ready on port: 3000
+
+//Visit http://localhost:3000
+Parsing project.json
+Parsing assets.json
+Creating context.
+Rendering style and index file!
+index.html File saved!
+
+```
+<% }) %>
+<p>Cd will generate the <code>index.html</code> each time you reload your browser. This is the file that Github Pages displays.</p>

@@ -1,0 +1,29 @@
+{
+  "cdn": [
+    
+  ],
+
+  "css" : [
+    "vendor/highlight/monokai.css",
+    "vendor/font-awesome.min.css",
+    "vendor/elastic.css",
+    "reset.css",
+    "button.css",
+
+    "style.css"
+  ],
+
+  "js" : [
+    "vendor/neon.js",
+    "vendor/jquery.js",
+    "vendor/ZeroClipboard.min.js",
+    "vendor/elastic.js",
+
+
+    "Cd.js"
+  ],
+
+  "googleFonts" : [
+    "Montserrat:400,700"
+  ]
+}

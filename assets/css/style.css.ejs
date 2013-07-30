@@ -1,0 +1,268 @@
+<% //Conf
+
+   //colors
+   var colors = {
+
+      first  : '#ed0700',
+      second : '#F7C21A',
+      third  : '#93C763',
+      fourth : '#1296ff',
+      fifth  : '#7db9e8',
+
+      bodyBg    : '#eeeeee',
+      wrapperBg : '#fdfdfd',
+      codeBg    : '#272822',
+
+      bodyText  : '#333333',
+      codeText  : '#dddddd', //for inline code
+
+      h1   : '#424242',
+      desc : '#969696'
+   };
+
+   //fonts
+   var fonts = {
+	   /* Trebuchet-based sans serif stack */
+       body : '"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif',
+       h1   : '"Montserrat", sans-serif'
+   };
+
+   //sizes
+   var sizes = {
+       wrapper : 660,
+
+       h1 : 48,
+       h2 : 24,
+       h3 : 16,
+
+       p : 14
+   };
+
+%>
+
+/******************************************** Theme */
+body {
+    font-size        : 100%;
+    
+    font-family      : <%= fonts.body %>;
+    color            : <%= colors.bodyText %>;
+    background-color : <%= colors.bodyBg %>;
+}
+
+.top-line{
+	width: 100%;
+	height: 3px;
+
+	background-color: #456;
+    background: linear-gradient(to right,  <%= colors.first %> 20%,<%= colors.second %> 21%,<%= colors.second %> 40%,<%= colors.third %> 41%,<%= colors.third %> 60%,<%= colors.fourth %> 61%,<%= colors.fourth %> 80%,<%= colors.fifth %> 81%); /* W3C */
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,.9);
+}
+
+.wrapper {
+	width   : <%= sizes.wrapper %>px;
+	padding : 20px;
+	margin  : auto;
+	
+	background-color : <%= colors.wrapperBg %>;
+	border-radius    : 0 0 3px 3px;
+}
+
+a {
+	font-weight : bold;
+	color       : <%= colors.first %>;
+}
+
+.api-icon{
+  font-size: 28px;
+}
+
+/******************************************* Text */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  position   : relative;
+  text-align : left;
+  
+  font-family : <%= fonts.h1 %>;
+}
+
+h1:before,
+h2:before,
+h3:before,
+h4:before,
+h5:before,
+h6:before{
+  position : absolute;
+  bottom   : -5px;
+  left     : 0;
+  width    : 100%;
+  content  : ' ';
+}
+
+
+h1{
+  margin : 50px -20px 5px -20px ;
+  padding-left: 20px;
+}
+h1:before{
+  height : 3px;
+  top    : -15px;
+
+  background-color : <%= colors.first %>;
+  box-shadow       : inset 0 1px 0 0 rgba(0,0,0,.3);
+}
+
+h2{ margin-top : 30px; }
+h2:before{
+  height : 2px;
+
+  background-color: <%= colors.second %>;
+}
+
+h3,
+h4,
+h5,
+h6{
+  margin-top : 20px;
+}
+
+h3:before,
+h4:before,
+h5:before,
+h6:before{
+  bottom   : -4px;
+  height   : 1px;
+}
+
+h3:before { background-color: <%= colors.third %>; }
+h4:before { background-color: <%= colors.fourth %>; }
+h5:before { background-color: <%= colors.fifth %>; }
+h6:before { background-color: <%= colors.sixth %>; }
+
+/********************************************* header */
+.header {
+	padding-top   : 50px;
+
+  font-family : <%= fonts.h1 %>;
+}
+
+.header a{
+  text-decoration : none; 
+}
+
+.tm-icon {
+  display : block;
+  margin  : auto;
+}
+
+.name{
+  margin-top  : 20px;
+  font-size   : <%= sizes.h1 %>px;
+  
+  text-align  : center;
+	font-weight : bold;
+	color       : <%= colors.h1 %>;
+}
+
+.name span{
+  font-size : <%= sizes.h2 %>px;
+
+    color     : <%= colors.first %>;
+}
+
+.description {
+	font-size : <%= sizes.h3 %>px;
+
+  text-align  : center;
+  font-weight : bold;
+	color       : <%= colors.desc %>;
+}
+
+/********************************************** intro */
+
+.get-code{
+  display    : block;
+  margin-top : 50px;
+  
+  text-align      : center;
+  text-decoration : none;
+}
+
+.get-code-button{
+  height : 23px;
+  width  : 250px;
+  
+  background-color : <%= colors.second %>;
+}
+
+.get-code-button span {
+	white-space : nowrap;
+}
+
+.icon-github {
+	font-size : 20px;
+}
+
+
+/***************************************** Code boxes */
+/* main code boxes */
+.code-highlight {
+	position        : relative;
+}
+
+.code-highlight code{
+	font-size : 12px;
+  padding   : 0 15px;
+	
+  background    : <%= colors.codeBg %>;
+	border-radius : 5px;
+}
+
+/* Copy Button */
+.code-copy{
+	position : absolute;
+	top : 5px;
+	right : 5px;
+
+	background-color : <%= colors.second %>;
+}
+
+.code-copy .icon-copy {
+	margin-left: 4px;
+}
+
+/* inline code */
+p code{
+  font-size : 14px;
+  padding   : 2px 3px;
+
+  color         : <%= colors.codeText %>;
+  background    : <%= colors.codeBg %>;
+  border-radius : 3px;
+}
+
+/************************** Footer */
+.footer{
+	height     : 15px;
+	padding    : 5px;
+	margin-top : 20px;
+	font-size  : 12px;
+	
+	color            : #ddd;
+	background-color : #333;
+}
+
+.cd-disclamer{
+	float     : right;
+	font-size : 10px;
+	
+	color : rgba(255,255,255,.5);
+}
+
+.cd-disclamer a{
+	color           : rgba(255,255,255,.8);
+	text-decoration : none;
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= Cd.proj.name %>.<%= Cd.proj.lang %></title>
+    <!-- favicon -->
+    <link rel="icon" type="image/gif" href="<%= Cd.proj.favicon + Cd.noCache %>" />
+    <!-- cdn -->
+    <%= Cd.renderCdn() %>
+    <!-- css -->
+    <%= Cd.renderCss() %>
+    <!-- fonts -->
+    <%= Cd.renderGoogleFonts() %>
+    <!-- js -->
+    <%= Cd.renderJs() %>
+
+</head>
+<body>
+    <!-- fork me ribbon -->
+    <a href="<%= Cd.proj.githubUrl %>"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_<%= Cd.proj.forkColor %>_ff7600.png" alt="Fork me on GitHub"></a>
+    <!-- top color bar -->    
+    <div class="top-line"></div>
+    
+    <div class="wrapper">
+        <!-- header -->
+        <%= Cd.render('header.ejs') %>
+        
+        <!-- content -->
+        <%= Cd.render('content.ejs') %>
+    </div>
+        
+        <!-- footer -->
+    <div class="footer">
+        <%= Cd.render('footer.ejs') %>
+    </div>
+</body>
+</html>

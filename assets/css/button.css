@@ -1,0 +1,52 @@
+/*************************************** button */
+.button{
+  padding : 1px 6px 3px 6px;
+  display: inline-block;
+  border-radius: 3px;
+  text-shadow : 0 1px rgba(255,255,255,.5);
+  box-shadow : 0 1px 0 0 rgba(255, 255, 255, 0.5) inset, -1px 0 0 0 rgba(255, 255, 255, 0.3) inset, 0 -2px 0 0 rgba(0, 0, 0, 0.3) inset, 1px 0 0 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 1px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  cursor : pointer;
+  position : relative;
+  overflow: hidden;
+  color : rgba(0,0,0,.8);
+}
+
+.button i{
+  margin : auto;
+  vertical-align: middle;
+}
+
+.button span{
+    font-size: 18px;
+    font-weight: 700;
+    vertical-align: middle;
+}
+
+.button div {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.button:hover .shade,
+.button.zeroclipboard-is-hover .shade{
+      background-color: rgba(255,255,255,.2);
+      position : absolute;
+      top : -2px;
+      left : 0;
+      width : 100%;
+      height : 100%;
+      border-radius : 2px;
+}
+
+.button:active,
+.button.zeroclipboard-is-active {
+    box-shadow : 0 1px 0 0 rgba(255, 255, 255, 0.5) inset, -1px 0 0 0 rgba(255, 255, 255, 0.3) inset, 0 -1px 0 0 rgba(0, 0, 0, 0.3) inset, 1px 0 0 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 1px rgba(0, 0, 0, 0.5);
+    padding : 1px 6px 2px 6px;
+    margin-top: 1px;
+}
+
+.button.zeroclipboard-is-active .shade,
+.button:active .shade{
+    background-color: rgba(255,255,255,.5);
+}
