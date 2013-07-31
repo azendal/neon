@@ -1,8 +1,8 @@
 <h1>Features</h1>
- 
+
 <h3 class="neon-feature"><i class="icon icon-building"></i> <i class="icon icon-hospital"></i> <span>Convenient DSL for creating classes</span></h3>
 
-<p>The syntax for creating the classes is very similar with that of those OO
+<p>The syntax for creating classes is very similar with that of other OO
 languages.</p>
 
 <%= Cd.printCode( function(){ %>
@@ -39,8 +39,8 @@ Class(NameSpace, 'SubClass').inherits(NameSpace.SuperClass)({
 
 <h3 class="neon-feature"> <i class="icon icon-puzzle-piece"></i> <span>Modules (composition)</span></h3>
 
-<p>You can include modules or mixins to your classes. You can extend multiple
-modules to a single class.</p>
+<p>You can include modules or mixins in your classes. You can extend multiple
+modules in a single class.</p>
 
 <%= Cd.printCode( function(){ %>
 ```javascript
@@ -62,132 +62,3 @@ myInstance.instanceMethod();
 
 ```
 <% }) %>
-
-<!-- 
-<h2>How it works?</h2>
-<p>Cd has a very simple json and template system, it uses <a target="_blank" href="http://freshout-dev.github.io/thulium">Thulium</a> implementation of EJS to compile its views.</p>
-
-<h3><i class="icon icon-folder-open"></i> /views</h3>
-<p>The views are stored into the <code>views</code> folder, Cd by default will look for <code>views/index.ejs</code> to render it, so start there, you can <a href="#render">use partials</a> to organize your views.</p>
-
-<h4>EJS</h4>
-<p>Cd uses EJS for the templates, we are using the <a target="_blank" href="https://github.com/freshout-dev/thulium/blob/master/spec.md#tm-tags">Thulium flavor syntax</a>:</p>
-<%= Cd.printCode( function(){ %>
-```django
-
-<? var myVariable = "This IS MY VariablE" ?>
-
-
-<div><?= myVariable.toLowercase() ?></div>
-
-
-<div>this is my variable</div>
-
-```
-<% }) %>
-
-<h3>Config files</h3>
-<p>Cd uses 2 json files to work:</p>
-
-<h4 id="project-file"><i class="icon icon-file"></i> /project.json</h4>
-<p>This json file will hold your project data, Cd uses this values to render them in the views:</p>
-<%= Cd.printCode( function(){ %>
-```javascript
-{
-  "name"      : "Cadmium",
-  "lang"      : "js",
-  "desc"      : "A simple theme for your project",
-  "url"       : "http://escusado.github.io/cadmium",
-  "githubUrl" : "https://github.com/escusado/cadmium",
-  "forkColor" : "orange",
-  "favicon"   : "assets/img/favicon.gif",
-  "icon"      : "assets/img/icon.png"
-}
-
-```
-<% }) %>
-<p>One cool thing is that if you add entries to this file, they will be peresent into the <a href="#proj">Cd.proj Api</a>.</p>
-
-<h4 id="assets-file"><i class="icon icon-file"></i> /assets.json</h4>
-<p>This file will contain the css, js, <a href="http://www.google.com/fonts/">Google fonts</a> and any CDN file you need to load on your page:</p>
-<%= Cd.printCode( function(){ %>
-```javascript
-{
-  "cdn": [
-    "<script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>"
-  ],
-
-  "css" : [
-    "vendor/highlight/monokai.css",
-    "reset.css",
-    "style.css"
-  ],
-
-  "js" : [
-    "vendor/neon.js",
-    "app/myScriptFile.js",
-  ],
-
-  "googleFonts" : [
-    "Montserrat:400,700"
-  ]
-}
-
-```
-<% }) %>
-<p>Then you can render them by using the <a href="#assets">Cd.renderCdn(), Cd.renderCss() and Cd.renderJs() Api calls</a>.</p>
-
-
-    
-<h2 id="style-file"><i class="icon icon-file"></i> style.css.ejs</h2>
-<p>This file; as well as the <code>index.html</code> generates the <code>style.css</code> file. It contains some variables to easy color, size and font tweaking:</p>
-
-<%= Cd.printCode( function(){ %>
-```javascript
-//colors
-var colors = {
-  first  : '#669933',
-  second : '#ffcc00',
-  third  : '#93C763',
-  fourth : '#1296ff',
-  fifth  : '#ED0700',
-
-  bodyBg    : '#eeeeee',
-  wrapperBg : '#fdfdfd',
-
-  bodyText  : '#333333',
-
-  h1   : '#424242',
-  desc : '#969696'
-};
-
-//fonts
-var fonts = {
-   /* Trebuchet-based sans serif stack */
-   body : '"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif',
-   h1   : '"Montserrat", sans-serif'
-};
-
-//sizes
-var sizes = {
-   wrapper : 660,
-
-   h1 : 48,
-   h2 : 24,
-   h3 : 16,
-
-   p : 14
-};
-
-//and then we use them below for the style rules
-...
-a {
-  font-weight : bold;
-  color       : <?= colors.first ?>;
-}
-...
-
-```
-<% }) %>
-<p>I recomend using a separate css file for your page specific rules.</p>
--->

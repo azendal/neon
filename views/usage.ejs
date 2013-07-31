@@ -52,16 +52,16 @@ Class(UI, 'Overlay').inherits(UI.Widget).includes(Draggable)({
     }
 });
 
-// Acces Your Class variables
+// Access Your Class variables
 UI.Overlay.threshold    // => 10
 UI.Overlay.HTML         // => '<div class="overlay"></div>'
 
-// Catch params on init method: init : function( config )
+// Catch params in the init method: init : function( config )
 var overlay = new UI.Overlay({ color : 'black', label : 'This is my label!' });
 
 // Use your instance
 overlay.color;          // => 'black'
-overlay.color = 'red';  
+overlay.color = 'red';
 overlay.setLabel( 'Changing the label!' );
 overlay.close();
 
