@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Neon.js</title>
     <!-- favicon -->
-    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=9a41" />
+    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=5227" />
     <!-- cdn -->
     
     <!-- css -->
@@ -44,7 +44,7 @@
         <div class="content">
     <!-- library presentation -->
     <h1>What is it?</h1>
-<p><a href="https://en.wikipedia.org/wiki/Cadmium" alt="Cadmium (Cd)" target="_blank">Cadmium (Cd)</a> is a node.js tool and a set of files that lets you create a site just like this so you can use it on <a target="_blank" href="http://pages.github.com/">Github Pages</a>.</p>
+<p><a href="http://en.wikipedia.org/wiki/Neon" alt="Neon (Ne)" target="_blank">Neon (Ne)</a> is a javascript Class system, designed to wrap up object oriented logic around Javascript objects (which are not truly OO), and to establish a common base language for developers using such classes.</p>
 
 <a class="get-code" href="https://github.com/azendal/neon" target="_blank">
     <div class="button get-code-button">
@@ -54,48 +54,132 @@
     </div>      
 </a>
 
-
-<h2>Features</h2>
-<div class="columns on-3">
-    <div class="elastic column"> <img src="/assets/img/eventSupport.png" alt="Event support"> </div>
-    <div class="elastic column"> <img src="/assets/img/nodeSupport.png" alt="Node support"> </div>    
-    <div class="elastic column"> <img src="/assets/img/widget.png" alt="Node support"> </div>    
-</div>
-
     <!-- quick usage -->
-    <h2 id="usage">Usage</h2>
-<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n//1. Get Cadmium files into your gh-pages branch\n&gt; ls\n    .gitignore\n    assets\n    views\n    assets.json\n    package.json\n    project.json\n    cadmium.js\n\n//2. Get the dependencies\n&gt; npm install\n\n//3. Run Cadmium server\n&gt; node cadmium.js\nCd ready on port: 3000\n\n//Visit http://localhost:3000\nParsing project.json\nParsing assets.json\nCreating context.\nRendering style and index file!\nindex.html File saved!\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
-<span class="comment">//1. Get Cadmium files into your gh-pages branch</span>
-&gt; ls
-    .gitignore
-    assets
-    views
-    assets.json
-    package.json
-    project.json
-    cadmium.js
-
-<span class="comment">//2. Get the dependencies</span>
-&gt; npm install
-
-<span class="comment">//3. Run Cadmium server</span>
-&gt; node cadmium.js
-Cd ready on port: <span class="number">3000</span>
-
-<span class="comment">//Visit http://localhost:3000</span>
-Parsing project.json
-Parsing assets.json
-Creating context.
-Rendering style and index file!
-index.html File saved!
+    <h1 id="usage">Usage</h1>
+<p>For browsers:</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n&lt;script src=&amp;dqu;/vendor/neon.js&amp;dqu;&gt;&lt;/script&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/vendor/neon.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
 
 </code></pre></div>
-<p>Cd will generate the <code>index.html</code> each time you reload your browser. This is the file that Github Pages displays.</p>
+
+<p>For node.js:</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nnpm install neon\n\n...\nvar Ne = require(&amp;squ;neon&amp;squ;);\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+npm install neon
+
+...
+<span class="keyword">var</span> Ne = require(<span class="string">'neon'</span>);
+
+</code></pre></div>
+
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n//Namespace\nUI = {};\n\n// Create a simple Class\nClass(UI, &amp;squ;Widget&amp;squ;)({\n    HTML : &amp;squ;&lt;div&gt;&lt;/div&gt;&amp;squ;,\n    prototype : {\n        init : function() { ... },\n        render : function() { ... }\n    }\n});\n\n// Inject functionality with Modules\nModule(&amp;squ;Draggable&amp;squ;)({\n    threshold : 10,\n    prototype : {\n        isDragging : false,\n        startDrag : function() { ... }\n    }\n});\n\n// Inherit and include to separate functionality\nClass(UI, &amp;squ;Overlay&amp;squ;).inherits(UI.Widget).includes(Draggable)({\n    HTML : &amp;squ;&lt;div class=&amp;dqu;overlay&amp;dqu;&gt;&lt;/div&gt;&amp;squ;,\n    prototype : {\n        color : &amp;squ;white&amp;squ;,\n        init : function( config ) { this.setLabel( config.label ) ... },\n        setLabel : function( labelText ) { ... }\n    }\n});\n\n// Acces Your Class variables\nUI.Overlay.threshold    // =&gt; 10\nUI.Overlay.HTML         // =&gt; &amp;squ;&lt;div class=&amp;dqu;overlay&amp;dqu;&gt;&lt;/div&gt;&amp;squ;\n\n// Catch params on init method: init : function( config )\nvar overlay = new UI.Overlay({ color : &amp;squ;black&amp;squ;, label : &amp;squ;This is my label!&amp;squ; });\n\n// Use your instance\noverlay.color;          // =&gt; &amp;squ;black&amp;squ;\noverlay.color = &amp;squ;red&amp;squ;;  \noverlay.setLabel( &amp;squ;Changing the label!&amp;squ; );\noverlay.close();\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+<span class="comment">//Namespace</span>
+UI = {};
+
+<span class="comment">// Create a simple Class</span>
+Class(UI, <span class="string">'Widget'</span>)({
+    HTML : <span class="string">'&lt;div&gt;&lt;/div&gt;'</span>,
+    prototype : {
+        init : <span class="keyword">function</span>() { ... },
+        render : <span class="keyword">function</span>() { ... }
+    }
+});
+
+<span class="comment">// Inject functionality with Modules</span>
+Module(<span class="string">'Draggable'</span>)({
+    threshold : <span class="number">10</span>,
+    prototype : {
+        isDragging : <span class="literal">false</span>,
+        startDrag : <span class="keyword">function</span>() { ... }
+    }
+});
+
+<span class="comment">// Inherit and include to separate functionality</span>
+Class(UI, <span class="string">'Overlay'</span>).inherits(UI.Widget).includes(Draggable)({
+    HTML : <span class="string">'&lt;div class="overlay"&gt;&lt;/div&gt;'</span>,
+    prototype : {
+        color : <span class="string">'white'</span>,
+        init : <span class="keyword">function</span>( config ) { <span class="keyword">this</span>.setLabel( config.label ) ... },
+        setLabel : <span class="keyword">function</span>( labelText ) { ... }
+    }
+});
+
+<span class="comment">// Acces Your Class variables</span>
+UI.Overlay.threshold    <span class="comment">// =&gt; 10</span>
+UI.Overlay.HTML         <span class="comment">// =&gt; '&lt;div class="overlay"&gt;&lt;/div&gt;'</span>
+
+<span class="comment">// Catch params on init method: init : function( config )</span>
+<span class="keyword">var</span> overlay = <span class="keyword">new</span> UI.Overlay({ color : <span class="string">'black'</span>, label : <span class="string">'This is my label!'</span> });
+
+<span class="comment">// Use your instance</span>
+overlay.color;          <span class="comment">// =&gt; 'black'</span>
+overlay.color = <span class="string">'red'</span>;  
+overlay.setLabel( <span class="string">'Changing the label!'</span> );
+overlay.close();
+
+</code></pre></div>
 
     <!-- how it works -->
-    <h1>Tweak it!</h1>
-<p>Cd its ment to be mess with. At this point the only thing you have to do is to customize the theme, content and data for your project, hack it at your convenience :)</p>
+    <h1>Features</h1>
+ 
+<h3 class="neon-feature"><i class="icon icon-building"></i> <i class="icon icon-hospital"></i> <span>Convenient DSL for creating classes</span></h3>
 
+<p>The syntax for creating the classes is very similar with that of those OO
+languages.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nClass(NameSpace, &amp;squ;ClassName&amp;squ;)({\n    classProperty : &amp;squ;value&amp;squ;,\n    prototype : {\n        init : function( initParams ) { ... },\n        instanceMethod : function() { ... }\n    }\n});\n\nvar myInstance = new ClassName( initParams );\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+Class(NameSpace, <span class="string">'ClassName'</span>)({
+    classProperty : <span class="string">'value'</span>,
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... },
+        instanceMethod : <span class="keyword">function</span>() { ... }
+    }
+});
+
+<span class="keyword">var</span> myInstance = <span class="keyword">new</span> ClassName( initParams );
+
+</code></pre></div>
+
+<h3 class="neon-feature"><i class="icon icon-sitemap"></i> <span>Inheritance</span></h3>
+
+<p>Inheritance is pretty much the reason to use OO, so it provides a nice way of
+subclassing. In esence, it's about extending javascript objects with the
+properties of the base class.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nClass(NameSpace, &amp;squ;SubClass&amp;squ;).inherits(NameSpace.SuperClass)({\n    prototype : {\n        init : function( initParams ) { ... } // overwrite SuperClass\n    }\n});\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+Class(NameSpace, <span class="string">'SubClass'</span>).inherits(NameSpace.SuperClass)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... } <span class="comment">// overwrite SuperClass</span>
+    }
+});
+
+</code></pre></div>
+
+<h3 class="neon-feature"> <i class="icon icon-puzzle-piece"></i> <span>Modules (composition)</span></h3>
+
+<p>You can include modules or mixins to your classes. You can extend multiple
+modules to a single class.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nModule(&amp;squ;MyModule&amp;squ;)({\n    prototype : {\n        instanceProperty : false,\n        instanceMethod : function() { ... }\n    }\n});\n\nClass(&amp;squ;MyClass&amp;squ;).includes(MyModule)({\n    prototype : {\n        init : function( initParams ) { ... } // overwrite SuperClass\n    }\n});\n\nvar myInstance = new ClassName( initParams );\nmyInstance.instanceMethod();\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+Module(<span class="string">'MyModule'</span>)({
+    prototype : {
+        instanceProperty : <span class="literal">false</span>,
+        instanceMethod : <span class="keyword">function</span>() { ... }
+    }
+});
+
+Class(<span class="string">'MyClass'</span>).includes(MyModule)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... } <span class="comment">// overwrite SuperClass</span>
+    }
+});
+
+<span class="keyword">var</span> myInstance = <span class="keyword">new</span> ClassName( initParams );
+myInstance.instanceMethod();
+
+</code></pre></div>
+
+<!-- 
 <h2>How it works?</h2>
 <p>Cd has a very simple json and template system, it uses <a target="_blank" href="http://freshout-dev.github.io/thulium">Thulium</a> implementation of EJS to compile its views.</p>
 
@@ -104,14 +188,14 @@ index.html File saved!
 
 <h4>EJS</h4>
 <p>Cd uses EJS for the templates, we are using the <a target="_blank" href="https://github.com/freshout-dev/thulium/blob/master/spec.md#tm-tags">Thulium flavor syntax</a>:</p>
-<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n&lt;!-- Execute code --&gt;\n&lt;% var myVariable = &amp;dqu;This IS MY VariablE&amp;dqu; %&gt;\n\n&lt;!-- print values --&gt;\n&lt;div&gt;&lt;%= myVariable.toLowercase() %&gt;&lt;/div&gt;\n\n&lt;!-- Renders --&gt;\n&lt;div&gt;this is my variable&lt;/div&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
-<span class="comment">&lt;!-- Execute code --&gt;</span>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n\n&lt;% var myVariable = &amp;dqu;This IS MY VariablE&amp;dqu; %&gt;\n\n\n&lt;div&gt;&lt;%= myVariable.toLowercase() %&gt;&lt;/div&gt;\n\n\n&lt;div&gt;this is my variable&lt;/div&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
+
 <span class="vbscript">&lt;% var myVariable = <span class="string">"This IS MY VariablE"</span> %&gt;</span>
 
-<span class="comment">&lt;!-- print values --&gt;</span>
+
 <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="vbscript">&lt;%= myVariable.toLowercase() %&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
 
-<span class="comment">&lt;!-- Renders --&gt;</span>
+
 <span class="tag">&lt;<span class="title">div</span>&gt;</span>this is my variable<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
 
 </code></pre></div>
@@ -214,109 +298,121 @@ a {
 
 </code></pre></div>
 <p>I recomend using a separate css file for your page specific rules.</p>
+-->
 
     <!-- Api -->
     <h1><i class="icon icon-gears api-icon"></i> API</h1>
-<p>Usage for the <code>Cd</code> context API:</p>
 
-<h3 id="proj">Cd.proj.<i>attrib</i></h3>
-<p>As mentioned before, the <a href="#project-file">project.json file</a> contains the attributes used by the API:</p>
+<h3 id="api.instatiation">Class and Module instantiation</h3>
 
-<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n&lt;!-- views/header.ejs --&gt;\n&lt;div class=&amp;dqu;header&amp;dqu;&gt;\n  &lt;a href=&amp;dqu;&lt;%= Cd.proj.url %&gt;&amp;dqu;&gt;\n    &lt;img class=&amp;dqu;tm-icon&amp;dqu; src=&amp;dqu;&lt;%= Cd.proj.icon %&gt;&amp;dqu; alt=&amp;dqu;&lt;%= Cd.proj.name %&gt;&amp;dqu;&gt;\n    &lt;div class=&amp;dqu;name&amp;dqu;&gt;&lt;%= Cd.proj.name %&gt;&lt;span&gt;.&lt;%= Cd.proj.lang %&gt;&lt;/span&gt;&lt;/div&gt;\n    &lt;div class=&amp;dqu;description&amp;dqu;&gt;&lt;%= Cd.proj.desc %&gt;&lt;/div&gt;\n  &lt;/a&gt;\n&lt;/div&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
-<span class="comment">&lt;!-- views/header.ejs --&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"header"</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"&lt;%= Cd.proj.url %&gt;"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">class</span>=<span class="value">"tm-icon"</span> <span class="attribute">src</span>=<span class="value">"&lt;%= Cd.proj.icon %&gt;"</span> <span class="attribute">alt</span>=<span class="value">"&lt;%= Cd.proj.name %&gt;"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"name"</span>&gt;</span><span class="vbscript">&lt;%= Cd.proj.name %&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>.<span class="vbscript">&lt;%= Cd.proj.lang %&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"description"</span>&gt;</span><span class="vbscript">&lt;%= Cd.proj.desc %&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">a</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nClass([namespace], [className]) // =&gt; Factory\nModule([namespace], [className]) // =&gt; Factory\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+Class([namespace], [className]) <span class="comment">// =&gt; Factory</span>
+Module([namespace], [className]) <span class="comment">// =&gt; Factory</span>
 
 </code></pre></div>
 
-<h3 id="assets">Assets api</h3>
-<p>As mentioned before, the <a href="#assets-file">assets</a> have an special shortcut api. The assets.json will hold the assets so the api can render them using the Cd api:</p>
+<p>The optional namespace argument is a valid javascript object of which the
+created class will be a property, or the global context by default.</p>
 
-<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n&lt;head&gt;\n    &lt;meta charset=&amp;dqu;UTF-8&amp;dqu;&gt;\n    &lt;title&gt;&lt;%= Cd.proj.name %&gt;.&lt;%= Cd.proj.lang %&gt;&lt;/title&gt;\n    &lt;!-- favicon --&gt;\n    &lt;link rel=&amp;dqu;icon&amp;dqu; type=&amp;dqu;image/gif&amp;dqu; href=&amp;dqu;&lt;%= Cd.proj.favicon+Cd.rId %&gt;&amp;dqu; /&gt;\n    &lt;!-- cdn --&gt;\n    &lt;%= Cd.renderCdn() %&gt;\n    &lt;!-- css --&gt;\n    &lt;%= Cd.renderCss() %&gt;\n    &lt;!-- fonts --&gt;\n    &lt;%= Cd.renderGoogleFonts() %&gt;\n    &lt;!-- js --&gt;\n    &lt;%= Cd.renderJs() %&gt;\n&lt;/head&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
-<span class="tag">&lt;<span class="title">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">title</span>&gt;</span><span class="vbscript">&lt;%= Cd.proj.name %&gt;</span>.<span class="vbscript">&lt;%= Cd.proj.lang %&gt;</span><span class="tag">&lt;/<span class="title">title</span>&gt;</span>
-    <span class="comment">&lt;!-- favicon --&gt;</span>
-    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">type</span>=<span class="value">"image/gif"</span> <span class="attribute">href</span>=<span class="value">"&lt;%= Cd.proj.favicon+Cd.rId %&gt;"</span> /&gt;</span>
-    <span class="comment">&lt;!-- cdn --&gt;</span>
-    <span class="vbscript">&lt;%= Cd.renderCdn() %&gt;</span>
-    <span class="comment">&lt;!-- css --&gt;</span>
-    <span class="vbscript">&lt;%= Cd.renderCss() %&gt;</span>
-    <span class="comment">&lt;!-- fonts --&gt;</span>
-    <span class="vbscript">&lt;%= Cd.renderGoogleFonts() %&gt;</span>
-    <span class="comment">&lt;!-- js --&gt;</span>
-    <span class="vbscript">&lt;%= Cd.renderJs() %&gt;</span>
-<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<p>The className argument is a string with the name of the class. It is possible
+to not pass a className, in which case the class will have an autogenerated
+name, this is common for creating anonymous classes. Note that you cannot
+have an anonymous class inside a namespace, the first argument will be
+interpreted as the className.</p>
 
-</code></pre></div>    
+<h3 id="api.definition">Class and Module definition</h3>
 
-<h3 id="code-blocks">Cd.printCode</h3>
-<p>Cd uses <a target="_blank" href="http://softwaremaniacs.org/soft/highlight/en/">highlight.js</a> to highlight code, you need to pass the code as a <a href="https://help.github.com/articles/github-flavored-markdown">Github flavored Markdown</a> format using any of the <a href="http://softwaremaniacs.org/media/soft/highlight/test.html">supported highlight.js</a> formats:</p>
-
-<div class="code-highlight">
-    <pre>
-        <code>
-&lt;%= Cd.printCode( function(){ %&gt;
-    ```javascript
-    var myCode = 'nice eyebrows!'
-
-    ```
-&lt;% }) %&gt;
-        </code>
-    </pre>
-</div>
-<p>You can customize which theme to use by changing the <code>"vendor/highlight/monokai.css"</code> in the <code>assets.json</code> file fo the one you like.</p>
-
-<h3 id="render">Cd.render</h3>
-<p>The render Api call lets you use partials, so you can separate your views in smaller files The api will look for your partials in the <code>/views</code> folder:</p>
-
-<p><i class="icon icon-file"></i> <strong>views/header.ejs</strong></p>
-<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n&lt;span&gt;This is my header!&lt;/span&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
-<span class="tag">&lt;<span class="title">span</span>&gt;</span>This is my header!<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
-
-</code></pre></div>
-    
-<p><i class="icon icon-file"></i> <strong>views/index.ejs</strong></p>
-<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n&lt;div class=&amp;dqu;header&amp;dqu;&gt;\n    &lt;%= Cd.render(&amp;squ;header.ejs&amp;squ;) %&gt;\n&lt;/div&gt;\n\n&lt;!-- Renders --&gt;\n&lt;div class=&amp;dqu;header&amp;dqu;&gt;&lt;span&gt;This is my header!&lt;/span&gt;&lt;/div&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"header"</span>&gt;</span>
-    <span class="vbscript">&lt;%= Cd.render(<span class="comment">'header.ejs') %&gt;</span></span>
-<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-
-<span class="comment">&lt;!-- Renders --&gt;</span>
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"header"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>This is my header!<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nfactory({\n    staticProperties...,\n    prototype : {\n        instanceProperties...\n    }\n}); // =&gt; Class\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+factory({
+    staticProperties...,
+    prototype : {
+        instanceProperties...
+    }
+}); <span class="comment">// =&gt; Class</span>
 
 </code></pre></div>
 
-<h3>Cd.noCache</h3>
-<p>Creates a <code>?nocache=1234</code> string containing 4 char hash, this helps if your broser has cache issues for images an assets.</p>
-<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n&lt;link rel=&amp;dqu;icon&amp;dqu; type=&amp;dqu;image/gif&amp;dqu; href=&amp;dqu;&lt;%= Cd.proj.favicon + Cd.rId %&gt;&amp;dqu; /&gt;\n\n&lt;!-- Renders --&gt;\n&lt;link rel=&amp;dqu;icon&amp;dqu; type=&amp;dqu;image/gif&amp;dqu; href=&amp;dqu;assets/img/favicon.gif%nocache=49d8&amp;dqu;&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
-<span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">type</span>=<span class="value">"image/gif"</span> <span class="attribute">href</span>=<span class="value">"&lt;%= Cd.proj.favicon + Cd.rId %&gt;"</span> /&gt;</span>
+<p>The class factory is an executable property, which accepts the class definition
+as a parameter.</p>
 
-<span class="comment">&lt;!-- Renders --&gt;</span>
-<span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">type</span>=<span class="value">"image/gif"</span> <span class="attribute">href</span>=<span class="value">"assets/img/favicon.gif%nocache=49d8"</span>&gt;</span>
+<p>The object properties will be copied by reference as static properties to the
+class.</p>
+
+<p>The <code>prototype</code> property of the class definition will serve as the base
+prorotype of the created objects. In fact, this is the
+<a rel="noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype">standard prototype</a>
+of Javascript. The properties in it will be copied by reference to all created
+objects.</p>
+
+<h3 id="api.initialization">Class initialization</h3>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\ninit : function( ... )\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+init : <span class="keyword">function</span>( ... )
 
 </code></pre></div>
+
+<p>When instantiating classes, they will call the <code>init</code> method defined in them, if
+overriden (By default it does nothing).</p>
+
+<p>To create an instance of an object, use the standard Javascript object
+constructor <code>new</code>. The parameters are passed to the init function</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nvar x = new MyClass()\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+<span class="keyword">var</span> x = <span class="keyword">new</span> MyClass()
+
+</code></pre></div>
+
+<h3 id="api.initialization">Class properties</h3>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nMyClass.className // =&gt; Returns the name of the class\nMyClass.superClass // =&gt; Returns the actual parent class\nmyInstance.constructor // =&gt; Returns a reference to the object&amp;squ;s class\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+MyClass.className <span class="comment">// =&gt; Returns the name of the class</span>
+MyClass.superClass <span class="comment">// =&gt; Returns the actual parent class</span>
+myInstance.constructor <span class="comment">// =&gt; Returns a reference to the object's class</span>
+
+</code></pre></div>
+
+<h3 id="api.initialization">Caveats</h3>
+
+<p>Be aware that since javascript's prototype works by reference, all non primitive
+values will point to the parent's prototype. To avoid this, make sure you assign
+a new value to those properties after initialization</p>
+
+<h2 id="api.initialization">What does not do</h2>
+
+<h6> <p><code>super</code> calls</p> </h6> 
+<p>The reasoning behind not including the <code>super</code> functionality is that it requires
+introspection. Even though is possible, the library tries to not mess with the
+Javascript way of doing things. If you need to call the same method of a parent
+class, you can use the function property of the prototype and call it yourself,
+e.g.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nmyMethod : function(params) {\n    ParentClass.prorotype.myMethod.call(this, params);\n}\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+myMethod : <span class="keyword">function</span>(params) {
+    ParentClass.prorotype.myMethod.call(<span class="keyword">this</span>, params);
+}
+
+</code></pre></div>
+
+<h6> <p><code>private</code> scoping</p> </h6> 
+<p>When working in pure Javascript or using Node module system, it is easy to hide
+functions by keeping them as a inner closure and not adding them to the
+prototype of the class. Neon does not have this functionality, since the classes
+are just wrapped objects and javascript does not have a way to hide properties
+itself. However, the suggested convention is to name your private methods
+starting with an underscore (_myMethod) to indicate that the method is private.</p>
 
     <!-- last notes -->
     <h1>Final notes</h1>
-<p>Originaly Cadmium was coded for Thulium project page, then adapted for easy page creation and fast deploy.</p>
-<p>You can connect your editor to a <a href="http://livereload.com/">LiveAutoReload plugins</a> to skip the reload each time.</p>
 
-<p>There are some things that need to be done:</p>
-<ul>
-    <li>Clean the cadmium.js code</li>
-    <li>HTML shorthand helper</li>
-    <li>Md to HTML so you can just add your md file</li>
-</ul>
-
-<p>One simple way to do this page is to paste the HTML that Github generates for you on your repo, just tweak the code display and adjust as you need.</p>
-<p>Keep in mind that Cd was coded to create this specific type of site, but surely you can adapt it to add/remove features, styles, etc.</p>
-<p><a target="_blank" href="http://code.toily.mx/cadmium/">Comments welcome here</a> :)</p>    
+<h2>So, why another Class library system?</h2>
+<p>Well, first of all, Neon was created around the time most of these libraries
+were still being developed, so it is natural that many of them appeared
+simultaneously (especially after the explosion on Node usage)
+But more importantly, Neon was created in order to make frontend coding more
+accesible to backend developers, who already know OO languages such as Ruby or
+PHP, as well as creating a common language in which they could communicate.
+Neon does not try to emulate other language, and preserves the Javascript good
+parts, with a nicer syntax.</p>    
 </div>
     </div>
         

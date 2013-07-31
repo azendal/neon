@@ -1,6 +1,69 @@
-<h1>Tweak it!</h1>
-<p>Cd its ment to be mess with. At this point the only thing you have to do is to customize the theme, content and data for your project, hack it at your convenience :)</p>
+<h1>Features</h1>
+ 
+<h3 class="neon-feature"><i class="icon icon-building"></i> <i class="icon icon-hospital"></i> <span>Convenient DSL for creating classes</span></h3>
 
+<p>The syntax for creating the classes is very similar with that of those OO
+languages.</p>
+
+<%= Cd.printCode( function(){ %>
+```javascript
+Class(NameSpace, 'ClassName')({
+    classProperty : 'value',
+    prototype : {
+        init : function( initParams ) { ... },
+        instanceMethod : function() { ... }
+    }
+});
+
+var myInstance = new ClassName( initParams );
+
+```
+<% }) %>
+
+<h3 class="neon-feature"><i class="icon icon-sitemap"></i> <span>Inheritance</span></h3>
+
+<p>Inheritance is pretty much the reason to use OO, so it provides a nice way of
+subclassing. In esence, it's about extending javascript objects with the
+properties of the base class.</p>
+
+<%= Cd.printCode( function(){ %>
+```javascript
+Class(NameSpace, 'SubClass').inherits(NameSpace.SuperClass)({
+    prototype : {
+        init : function( initParams ) { ... } // overwrite SuperClass
+    }
+});
+
+```
+<% }) %>
+
+<h3 class="neon-feature"> <i class="icon icon-puzzle-piece"></i> <span>Modules (composition)</span></h3>
+
+<p>You can include modules or mixins to your classes. You can extend multiple
+modules to a single class.</p>
+
+<%= Cd.printCode( function(){ %>
+```javascript
+Module('MyModule')({
+    prototype : {
+        instanceProperty : false,
+        instanceMethod : function() { ... }
+    }
+});
+
+Class('MyClass').includes(MyModule)({
+    prototype : {
+        init : function( initParams ) { ... } // overwrite SuperClass
+    }
+});
+
+var myInstance = new ClassName( initParams );
+myInstance.instanceMethod();
+
+```
+<% }) %>
+
+<!-- 
 <h2>How it works?</h2>
 <p>Cd has a very simple json and template system, it uses <a target="_blank" href="http://freshout-dev.github.io/thulium">Thulium</a> implementation of EJS to compile its views.</p>
 
@@ -11,13 +74,13 @@
 <p>Cd uses EJS for the templates, we are using the <a target="_blank" href="https://github.com/freshout-dev/thulium/blob/master/spec.md#tm-tags">Thulium flavor syntax</a>:</p>
 <%= Cd.printCode( function(){ %>
 ```django
-<!-- Execute code -->
+
 <? var myVariable = "This IS MY VariablE" ?>
 
-<!-- print values -->
+
 <div><?= myVariable.toLowercase() ?></div>
 
-<!-- Renders -->
+
 <div>this is my variable</div>
 
 ```
@@ -127,3 +190,4 @@ a {
 ```
 <% }) %>
 <p>I recomend using a separate css file for your page specific rules.</p>
+-->

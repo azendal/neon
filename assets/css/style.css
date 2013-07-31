@@ -176,6 +176,7 @@ h6:before { background-color: undefined; }
 .code-highlight code{
 	font-size : 12px;
   padding   : 0 15px;
+  min-height: 51px;
 	
   background    : #272822;
 	border-radius : 5px;
@@ -226,3 +227,56 @@ p code{
 	color           : rgba(255,255,255,.8);
 	text-decoration : none;
 }
+
+/********************************* Neon */
+@font-face {
+  font-family: 'NokiaCellphoneFC-Small';
+  src: url('/assets/css/font/nokiafc22.eot');
+  src: url('/assets/css/font/nokiafc22.eot?#iefix') format('embedded-opentype'),
+       url('/assets/css/font/nokiafc22.woff') format('woff'),
+       url('/assets/css/font/nokiafc22.ttf') format('truetype'),
+       url('/assets/css/font/nokiafc22.svg#NokiaCellphoneFC-Small') format('svg');
+}
+
+.get-code-button {
+  width       : 420px; 
+  height      : 60px; 
+  padding-top : 16px;
+}
+
+.get-code-button:active {
+
+  padding-top : 16px;
+}
+
+.get-code-button i {
+  font-size   : 45px;
+  margin-right : 13px;
+}
+
+.get-code-button span{
+  font-family    : 'NokiaCellphoneFC-Small',sans-serif;
+  font-weight    : normal;
+  font-size      : 22px;
+  letter-spacing : -1px;
+}
+
+/* Features */
+.neon-feature:before {
+  background-color : transparent;
+}
+
+.neon-feature span,
+.neon-feature i {
+  vertical-align : middle;
+}
+
+.neon-feature span {
+  font-size   : 20px;
+  margin-left : 10px
+}
+
+.neon-feature i{
+  font-size : 40px;
+}
+

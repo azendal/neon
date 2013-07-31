@@ -1,30 +1,69 @@
-<h2 id="usage">Usage</h2>
+<h1 id="usage">Usage</h1>
+<p>For browsers:</p>
 <%= Cd.printCode( function(){ %>
-```javascript
-//1. Get Cadmium files into your gh-pages branch
-> ls
-    .gitignore
-    assets
-    views
-    assets.json
-    package.json
-    project.json
-    cadmium.js
-
-//2. Get the dependencies
-> npm install
-
-//3. Run Cadmium server
-> node cadmium.js
-Cd ready on port: 3000
-
-//Visit http://localhost:3000
-Parsing project.json
-Parsing assets.json
-Creating context.
-Rendering style and index file!
-index.html File saved!
+```django
+<script src="/vendor/neon.js"></script>
 
 ```
 <% }) %>
-<p>Cd will generate the <code>index.html</code> each time you reload your browser. This is the file that Github Pages displays.</p>
+
+<p>For node.js:</p>
+<%= Cd.printCode( function(){ %>
+```javascript
+npm install neon
+
+...
+var Ne = require('neon');
+
+```
+<% }) %>
+
+
+<%= Cd.printCode( function(){ %>
+```javascript
+//Namespace
+UI = {};
+
+// Create a simple Class
+Class(UI, 'Widget')({
+    HTML : '<div></div>',
+    prototype : {
+        init : function() { ... },
+        render : function() { ... }
+    }
+});
+
+// Inject functionality with Modules
+Module('Draggable')({
+    threshold : 10,
+    prototype : {
+        isDragging : false,
+        startDrag : function() { ... }
+    }
+});
+
+// Inherit and include to separate functionality
+Class(UI, 'Overlay').inherits(UI.Widget).includes(Draggable)({
+    HTML : '<div class="overlay"></div>',
+    prototype : {
+        color : 'white',
+        init : function( config ) { this.setLabel( config.label ) ... },
+        setLabel : function( labelText ) { ... }
+    }
+});
+
+// Acces Your Class variables
+UI.Overlay.threshold    // => 10
+UI.Overlay.HTML         // => '<div class="overlay"></div>'
+
+// Catch params on init method: init : function( config )
+var overlay = new UI.Overlay({ color : 'black', label : 'This is my label!' });
+
+// Use your instance
+overlay.color;          // => 'black'
+overlay.color = 'red';  
+overlay.setLabel( 'Changing the label!' );
+overlay.close();
+
+```
+<% }) %>
