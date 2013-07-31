@@ -6,7 +6,6 @@
   "css" : [
     "vendor/highlight/monokai.css",
     "vendor/font-awesome.min.css",
-    "vendor/elastic.css",
     "reset.css",
     "button.css",
 
@@ -17,7 +16,6 @@
     "vendor/neon.js",
     "vendor/jquery.js",
     "vendor/ZeroClipboard.min.js",
-    "vendor/elastic.js",
 
 
     "Cd.js"
