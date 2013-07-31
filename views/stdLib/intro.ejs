@@ -1,45 +1,51 @@
-<h1>Neon Standard Library</h1>
+<h1 id="stdlib">Neon Standard Library</h1>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, pariatur, atque, labore, veniam incidunt cumque nam dolorem praesentium ratione assumenda quas at adipisci obcaecati animi vitae recusandae quae commodi modi.</p>
 
 <div class="stdlib-tabs">
 
     <ul class="stdlib-intro-table">
-        <li>
-            <a href="#stdlib.eventSupport">
+        <li class="active" data-content="stdlib-eventSupport">
+            <div class="icon-wrapper">
                 <img src="assets/img/eventSupport.png" alt="Event Support">
-                <div></div>
-                <h2>Event Support</h2><span>.js</span>
-            </a>
+                <img src="assets/img/eventSupport-b.png" class="grayed">
+            </div>
+            <div></div>
+            <h2>Event Support</h2><span>.js</span>
         </li>
-        <li>
-            <a href="#stdlib.nodeSupport">
+        <li data-content="stdlib-nodeSupport">
+            <div class="icon-wrapper">
                 <img src="assets/img/nodeSupport.png" alt="Node Support">
-                <div></div>
-                <h2>Node Support</h2><span>.js</span>
-            </a>
+                <img src="assets/img/nodeSupport-b.png" class="grayed">
+            </div>
+            <div></div>
+            <h2>Node Support</h2><span>.js</span>
         </li>
-        <li>
-            <a href="#stdlib.widget">
+        <li data-content="stdlib-widget">
+            <div class="icon-wrapper">
                 <img src="assets/img/widget.png" alt="Widget">
-                <div></div>
-                <h2>Widget</h2><span>.js</span>
-            </a>
+                <img src="assets/img/widget-b.png" class="grayed">
+            </div>
+            <div></div>
+            <h2>Widget</h2><span>.js</span>
         </li>
         <div class="clearfix"></div>
     </ul>
 
+    <div class="stdlib-content-wrapper">
+        <div class="stdlib-content stdlib-eventSupport">
+            <%= Cd.render('stdLib/eventSupport.ejs') %>
+        </div>
 
-    <div id="stdlib.eventSupport">
-        <%= Cd.render('stdLib/eventSupport.ejs') %>
+        <div class="stdlib-content stdlib-nodeSupport">
+            <%= Cd.render('stdLib/nodeSupport.ejs') %>
+        </div>
+
+        <div class="stdlib-content stdlib-widget">
+            <%= Cd.render('stdLib/widget.ejs') %>
+        </div>
     </div>
-
-    <div id="stdlib.nodeSupport">
-        <%= Cd.render('stdLib/nodeSupport.ejs') %>
-    </div>
-
-    <div id="stdlib.widget">
-        <%= Cd.render('stdLib/widget.ejs') %>
-    </div>
-
 </div> <!-- stdlib-tabs -->
+
+<h1>Piecing it all together</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, maxime, accusamus, incidunt, officiis minima unde veritatis sunt a facere ipsam quasi dolorum magni fuga et optio. Alias vero deserunt commodi.</p>

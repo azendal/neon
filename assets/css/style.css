@@ -286,15 +286,48 @@ p code{
 
 /* stdLib */
 
+.stdlib-tabs{
+  margin-top : 40px;
+}
+
 .stdlib-intro-table { 
+  height : 204px;
   padding : 0;
 }
 
 .stdlib-intro-table li {
   width      : 33%;
+  padding-top: 20px;
   list-style : none;
   float      : left;
   text-align : center;
+  cursor     : pointer;
+  transition: padding 0.1s;
+}
+
+.stdlib-intro-table .icon-wrapper{
+  position   : relative;
+  display    : block;
+  height : 160px;
+}
+
+.stdlib-intro-table .icon-wrapper img{
+  position : absolute;
+  top : 0;
+  left : 32px;
+}
+
+.stdlib-intro-table li:hover,
+.stdlib-intro-table li.active{
+  padding-top: 5px;
+}
+
+.stdlib-intro-table li .grayed{
+  transition: opacity 0.5s;
+}
+
+.stdlib-intro-table li.active .grayed{
+  opacity : 0;
 }
 
 .stdlib-intro-table img:after{
@@ -306,18 +339,25 @@ p code{
   display   : inline;
 }
 
-.stdlib-intro-table a {
-  color : #333333;
-  text-decoration : none;
-}
-
 .stdlib-intro-table h2:before {
   background-color : transparent;
 }
 
+.stdlib-content-wrapper{
+  overflow : hidden;
+}
+
+.stdlib-content-wrapper h2{
+  margin-top : 0;
+}
 
 .stdlib-intro-table span {
   font-weight : bold;
-  color       : #ed0700;
+  color       : #B4B4B4;
   font-size   : 18px;
+  transition: color 0.5s;
+}
+
+.stdlib-intro-table li.active span {
+  color       : #ed0700;
 }

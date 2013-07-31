@@ -27,15 +27,28 @@ Class('Cadmium')({
 
     stdlibTabs : function(){
         var stdLibEl = this.element.find('.stdlib-tabs'),
-            tabs     = stdLibEl.find('ul li a'),
-            content  = stdLibEl.find('>div');
-            
-        tabs.each(function(i, tab){
-            tab.click(function( element ){
-                var contentId = $(element).attr('href').replace('#','');
-                content.hide();
-            });
+            tabs     = stdLibEl.find('ul li'),
+            contentW = stdLibEl.find('.stdlib-content-wrapper'),
+            content  = stdLibEl.find('.stdlib-content');
+        
+        content.each(function(){
+            $(this).attr('data-height', $(this).height());
         });
+
+        //setup tabs
+        content.hide().first().show();
+
+        //show only clicked tab content
+        tabs.click(function(){
+          var tab        = $(this);
+              tabContent = stdLibEl.find( '.'+tab.attr('data-content') );
+          tabs.removeClass('active');
+          tab.addClass('active');
+          content.hide();
+          tabContent.fadeIn();
+          contentW.animate({height:tabContent.attr('data-height')},100);
+        });
+
     }
   }
 });
