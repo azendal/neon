@@ -21,6 +21,21 @@ Class('Cadmium')({
         });
       });
 
+      this.stdlibTabs();
+
+    },
+
+    stdlibTabs : function(){
+        var stdLibEl = this.element.find('.stdlib-tabs'),
+            tabs     = stdLibEl.find('ul li a'),
+            content  = stdLibEl.find('>div');
+            
+        tabs.each(function(i, tab){
+            tab.click(function( element ){
+                var contentId = $(element).attr('href').replace('#','');
+                content.hide();
+            });
+        });
     }
   }
 });

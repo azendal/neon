@@ -285,6 +285,7 @@ p code{
 }
 
 /* stdLib */
+
 .stdlib-intro-table { 
   padding : 0;
 }
@@ -305,6 +306,11 @@ p code{
   display   : inline;
 }
 
+.stdlib-intro-table a {
+  color : #333333;
+  text-decoration : none;
+}
+
 .stdlib-intro-table h2:before {
   background-color : transparent;
 }
@@ -312,7 +318,6 @@ p code{
 
 .stdlib-intro-table span {
   font-weight : bold;
-  color : #ed0700;
-  font-size : 18px;
-
+  color       : #ed0700;
+  font-size   : 18px;
 }
