@@ -10,26 +10,26 @@ body {
 }
 
 .top-line{
-	width: 100%;
-	height: 3px;
+  width: 100%;
+  height: 3px;
 
-	background-color: #456;
+  background-color: #456;
     background: linear-gradient(to right,  #ed0700 20%,#F7C21A 21%,#F7C21A 40%,#93C763 41%,#93C763 60%,#1296ff 61%,#1296ff 80%,#7db9e8 81%); /* W3C */
-	box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,.9);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,.9);
 }
 
 .wrapper {
-	width   : 660px;
-	padding : 20px;
-	margin  : auto;
-	
-	background-color : #fdfdfd;
-	border-radius    : 0 0 3px 3px;
+  width   : 660px;
+  padding : 20px;
+  margin  : auto;
+  
+  background-color : #fdfdfd;
+  border-radius    : 0 0 3px 3px;
 }
 
 a {
-	font-weight : bold;
-	color       : #ed0700;
+  font-weight : bold;
+  color       : #ed0700;
 }
 
 .api-icon{
@@ -104,7 +104,7 @@ h6:before { background-color: undefined; }
 
 /********************************************* header */
 .header {
-	padding-top   : 50px;
+  padding-top   : 50px;
 
   font-family : "Montserrat", sans-serif;
 }
@@ -123,8 +123,8 @@ h6:before { background-color: undefined; }
   font-size   : 48px;
   
   text-align  : center;
-	font-weight : bold;
-	color       : #424242;
+  font-weight : bold;
+  color       : #424242;
 }
 
 .name span{
@@ -134,11 +134,11 @@ h6:before { background-color: undefined; }
 }
 
 .description {
-	font-size : 16px;
+  font-size : 16px;
 
   text-align  : center;
   font-weight : bold;
-	color       : #969696;
+  color       : #969696;
 }
 
 /********************************************** intro */
@@ -159,40 +159,40 @@ h6:before { background-color: undefined; }
 }
 
 .get-code-button span {
-	white-space : nowrap;
+  white-space : nowrap;
 }
 
 .icon-github {
-	font-size : 20px;
+  font-size : 20px;
 }
 
 
 /***************************************** Code boxes */
 /* main code boxes */
 .code-highlight {
-	position        : relative;
+  position        : relative;
 }
 
 .code-highlight code{
-	font-size : 12px;
+  font-size : 12px;
   padding   : 0 15px;
   min-height: 51px;
-	
+  
   background    : #272822;
-	border-radius : 5px;
+  border-radius : 5px;
 }
 
 /* Copy Button */
 .code-copy{
-	position : absolute;
-	top : 5px;
-	right : 5px;
+  position : absolute;
+  top : 5px;
+  right : 5px;
 
-	background-color : #F7C21A;
+  background-color : #F7C21A;
 }
 
 .code-copy .icon-copy {
-	margin-left: 4px;
+  margin-left: 4px;
 }
 
 /* inline code */
@@ -207,28 +207,32 @@ p code{
 
 /************************** Footer */
 .footer{
-	height     : 15px;
-	padding    : 5px;
-	margin-top : 20px;
-	font-size  : 12px;
-	
-	color            : #ddd;
-	background-color : #333;
+  height     : 15px;
+  padding    : 5px;
+  margin-top : 20px;
+  font-size  : 12px;
+  
+  color            : #ddd;
+  background-color : #333;
 }
 
 .cd-disclamer{
-	float     : right;
-	font-size : 10px;
-	
-	color : rgba(255,255,255,.5);
+  float     : right;
+  font-size : 10px;
+  
+  color : rgba(255,255,255,.5);
 }
 
 .cd-disclamer a{
-	color           : rgba(255,255,255,.8);
-	text-decoration : none;
+  color           : rgba(255,255,255,.8);
+  text-decoration : none;
 }
 
 /********************************* Neon */
+.clearfix{
+  clear : both;
+}
+
 @font-face {
   font-family: 'NokiaCellphoneFC-Small';
   src: url('/assets/css/font/nokiafc22.eot');
@@ -280,3 +284,35 @@ p code{
   font-size : 40px;
 }
 
+/* stdLib */
+.stdlib-intro-table { 
+  padding : 0;
+}
+
+.stdlib-intro-table li {
+  width      : 33%;
+  list-style : none;
+  float      : left;
+  text-align : center;
+}
+
+.stdlib-intro-table img:after{
+  display : block;
+}
+
+.stdlib-intro-table h2 {
+  font-size : 20px;
+  display   : inline;
+}
+
+.stdlib-intro-table h2:before {
+  background-color : transparent;
+}
+
+
+.stdlib-intro-table span {
+  font-weight : bold;
+  color : #ed0700;
+  font-size : 18px;
+
+}

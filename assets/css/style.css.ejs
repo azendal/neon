@@ -22,7 +22,7 @@
 
    //fonts
    var fonts = {
-	   /* Trebuchet-based sans serif stack */
+     /* Trebuchet-based sans serif stack */
        body : '"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif',
        h1   : '"Montserrat", sans-serif'
    };
@@ -50,26 +50,26 @@ body {
 }
 
 .top-line{
-	width: 100%;
-	height: 3px;
+  width: 100%;
+  height: 3px;
 
-	background-color: #456;
+  background-color: #456;
     background: linear-gradient(to right,  <%= colors.first %> 20%,<%= colors.second %> 21%,<%= colors.second %> 40%,<%= colors.third %> 41%,<%= colors.third %> 60%,<%= colors.fourth %> 61%,<%= colors.fourth %> 80%,<%= colors.fifth %> 81%); /* W3C */
-	box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,.9);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,.9);
 }
 
 .wrapper {
-	width   : <%= sizes.wrapper %>px;
-	padding : 20px;
-	margin  : auto;
-	
-	background-color : <%= colors.wrapperBg %>;
-	border-radius    : 0 0 3px 3px;
+  width   : <%= sizes.wrapper %>px;
+  padding : 20px;
+  margin  : auto;
+  
+  background-color : <%= colors.wrapperBg %>;
+  border-radius    : 0 0 3px 3px;
 }
 
 a {
-	font-weight : bold;
-	color       : <%= colors.first %>;
+  font-weight : bold;
+  color       : <%= colors.first %>;
 }
 
 .api-icon{
@@ -144,7 +144,7 @@ h6:before { background-color: <%= colors.sixth %>; }
 
 /********************************************* header */
 .header {
-	padding-top   : 50px;
+  padding-top   : 50px;
 
   font-family : <%= fonts.h1 %>;
 }
@@ -163,8 +163,8 @@ h6:before { background-color: <%= colors.sixth %>; }
   font-size   : <%= sizes.h1 %>px;
   
   text-align  : center;
-	font-weight : bold;
-	color       : <%= colors.h1 %>;
+  font-weight : bold;
+  color       : <%= colors.h1 %>;
 }
 
 .name span{
@@ -174,11 +174,11 @@ h6:before { background-color: <%= colors.sixth %>; }
 }
 
 .description {
-	font-size : <%= sizes.h3 %>px;
+  font-size : <%= sizes.h3 %>px;
 
   text-align  : center;
   font-weight : bold;
-	color       : <%= colors.desc %>;
+  color       : <%= colors.desc %>;
 }
 
 /********************************************** intro */
@@ -199,40 +199,40 @@ h6:before { background-color: <%= colors.sixth %>; }
 }
 
 .get-code-button span {
-	white-space : nowrap;
+  white-space : nowrap;
 }
 
 .icon-github {
-	font-size : 20px;
+  font-size : 20px;
 }
 
 
 /***************************************** Code boxes */
 /* main code boxes */
 .code-highlight {
-	position        : relative;
+  position        : relative;
 }
 
 .code-highlight code{
-	font-size : 12px;
+  font-size : 12px;
   padding   : 0 15px;
   min-height: 51px;
-	
+  
   background    : <%= colors.codeBg %>;
-	border-radius : 5px;
+  border-radius : 5px;
 }
 
 /* Copy Button */
 .code-copy{
-	position : absolute;
-	top : 5px;
-	right : 5px;
+  position : absolute;
+  top : 5px;
+  right : 5px;
 
-	background-color : <%= colors.second %>;
+  background-color : <%= colors.second %>;
 }
 
 .code-copy .icon-copy {
-	margin-left: 4px;
+  margin-left: 4px;
 }
 
 /* inline code */
@@ -247,35 +247,39 @@ p code{
 
 /************************** Footer */
 .footer{
-	height     : 15px;
-	padding    : 5px;
-	margin-top : 20px;
-	font-size  : 12px;
-	
-	color            : #ddd;
-	background-color : #333;
+  height     : 15px;
+  padding    : 5px;
+  margin-top : 20px;
+  font-size  : 12px;
+  
+  color            : #ddd;
+  background-color : #333;
 }
 
 .cd-disclamer{
-	float     : right;
-	font-size : 10px;
-	
-	color : rgba(255,255,255,.5);
+  float     : right;
+  font-size : 10px;
+  
+  color : rgba(255,255,255,.5);
 }
 
 .cd-disclamer a{
-	color           : rgba(255,255,255,.8);
-	text-decoration : none;
+  color           : rgba(255,255,255,.8);
+  text-decoration : none;
 }
 
 /********************************* Neon */
+.clearfix{
+  clear : both;
+}
+
 @font-face {
   font-family: 'NokiaCellphoneFC-Small';
-  src: url('assets/css/font/nokiafc22.eot');
-  src: url('assets/css/font/nokiafc22.eot?#iefix') format('embedded-opentype'),
-       url('assets/css/font/nokiafc22.woff') format('woff'),
-       url('assets/css/font/nokiafc22.ttf') format('truetype'),
-       url('assets/css/font/nokiafc22.svg#NokiaCellphoneFC-Small') format('svg');
+  src: url('/assets/css/font/nokiafc22.eot');
+  src: url('/assets/css/font/nokiafc22.eot?#iefix') format('embedded-opentype'),
+       url('/assets/css/font/nokiafc22.woff') format('woff'),
+       url('/assets/css/font/nokiafc22.ttf') format('truetype'),
+       url('/assets/css/font/nokiafc22.svg#NokiaCellphoneFC-Small') format('svg');
 }
 
 .get-code-button {
@@ -320,3 +324,35 @@ p code{
   font-size : 40px;
 }
 
+/* stdLib */
+.stdlib-intro-table { 
+  padding : 0;
+}
+
+.stdlib-intro-table li {
+  width      : 33%;
+  list-style : none;
+  float      : left;
+  text-align : center;
+}
+
+.stdlib-intro-table img:after{
+  display : block;
+}
+
+.stdlib-intro-table h2 {
+  font-size : 20px;
+  display   : inline;
+}
+
+.stdlib-intro-table h2:before {
+  background-color : transparent;
+}
+
+
+.stdlib-intro-table span {
+  font-weight : bold;
+  color : <%= colors.first %>;
+  font-size : 18px;
+
+}
