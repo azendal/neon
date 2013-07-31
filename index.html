@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neon.js</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=2a5c" />
+    <!-- cdn -->
+    
+    <!-- css -->
+    <link href="assets/css/vendor/highlight/monokai.css" rel="stylesheet" type="text/css">
+<link href="assets/css/vendor/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+<link href="assets/css/button.css" rel="stylesheet" type="text/css">
+<link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <!-- fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <!-- js -->
+    <script src="assets/js/vendor/neon.js"></script>
+<script src="assets/js/vendor/jquery.js"></script>
+<script src="assets/js/vendor/ZeroClipboard.min.js"></script>
+<script src="assets/js/Cd.js"></script>
+
+</head>
+<body>
+    <!-- fork me ribbon -->
+    <a href="https://github.com/azendal/neon"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+    <!-- top color bar -->    
+    <div class="top-line"></div>
+    
+    <div class="wrapper">
+        <!-- header -->
+        <div class="header">
+  <a href="http://azendal.github.io/neon">
+    <img class="tm-icon" src="assets/img/icon.png" alt="Neon">
+    <div class="name">Neon<span>.js</span></div>
+    <div class="description">Neon is awesome lorem lorem lorem</div>
+  </a>
+</div>
+        
+        <!-- content -->
+        <div class="content">
+    <!-- library presentation -->
+    <h1>What is it?</h1>
+<p><a href="http://en.wikipedia.org/wiki/Neon" alt="Neon (Ne)" target="_blank">Neon (Ne)</a> is a javascript Class system designed to wrap up object oriented logic around Javascript objects (which are not truly OO), and to establish a common base language for developers using such classes.</p>
+
+<a class="get-code" href="https://github.com/azendal/neon" target="_blank">
+    <div class="button get-code-button">
+        <i class="icon icon-github"></i>
+        <span> Get the code on Github! </span>
+        <div class="shade"></div>
+    </div>
+</a>
+
+
+    <!-- quick usage -->
+    <h1 id="usage">Usage</h1>
+<p>For browsers:</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n&lt;script src=&amp;dqu;/vendor/neon.js&amp;dqu;&gt;&lt;/script&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"/vendor/neon.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+
+</code></pre></div>
+
+<p>For node.js:</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nnpm install neon\n\n...\nvar Ne = require(&amp;squ;neon&amp;squ;);\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+npm install neon
+
+...
+<span class="keyword">var</span> Ne = require(<span class="string">'neon'</span>);
+
+</code></pre></div>
+
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n//Namespace\nUI = {};\n\n// Create a simple Class\nClass(UI, &amp;squ;Widget&amp;squ;)({\n    HTML : &amp;squ;&lt;div&gt;&lt;/div&gt;&amp;squ;,\n    prototype : {\n        init : function() { ... },\n        render : function() { ... }\n    }\n});\n\n// Inject functionality with Modules\nModule(&amp;squ;Draggable&amp;squ;)({\n    threshold : 10,\n    prototype : {\n        isDragging : false,\n        startDrag : function() { ... }\n    }\n});\n\n// Inherit and include to separate functionality\nClass(UI, &amp;squ;Overlay&amp;squ;).inherits(UI.Widget).includes(Draggable)({\n    HTML : &amp;squ;&lt;div class=&amp;dqu;overlay&amp;dqu;&gt;&lt;/div&gt;&amp;squ;,\n    prototype : {\n        color : &amp;squ;white&amp;squ;,\n        init : function( config ) { this.setLabel( config.label ) ... },\n        setLabel : function( labelText ) { ... }\n    }\n});\n\n// Access Your Class variables\nUI.Overlay.threshold    // =&gt; 10\nUI.Overlay.HTML         // =&gt; &amp;squ;&lt;div class=&amp;dqu;overlay&amp;dqu;&gt;&lt;/div&gt;&amp;squ;\n\n// Catch params in the init method: init : function( config )\nvar overlay = new UI.Overlay({ color : &amp;squ;black&amp;squ;, label : &amp;squ;This is my label!&amp;squ; });\n\n// Use your instance\noverlay.color;          // =&gt; &amp;squ;black&amp;squ;\noverlay.color = &amp;squ;red&amp;squ;;\noverlay.setLabel( &amp;squ;Changing the label!&amp;squ; );\noverlay.close();\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+<span class="comment">//Namespace</span>
+UI = {};
+
+<span class="comment">// Create a simple Class</span>
+Class(UI, <span class="string">'Widget'</span>)({
+    HTML : <span class="string">'&lt;div&gt;&lt;/div&gt;'</span>,
+    prototype : {
+        init : <span class="keyword">function</span>() { ... },
+        render : <span class="keyword">function</span>() { ... }
+    }
+});
+
+<span class="comment">// Inject functionality with Modules</span>
+Module(<span class="string">'Draggable'</span>)({
+    threshold : <span class="number">10</span>,
+    prototype : {
+        isDragging : <span class="literal">false</span>,
+        startDrag : <span class="keyword">function</span>() { ... }
+    }
+});
+
+<span class="comment">// Inherit and include to separate functionality</span>
+Class(UI, <span class="string">'Overlay'</span>).inherits(UI.Widget).includes(Draggable)({
+    HTML : <span class="string">'&lt;div class="overlay"&gt;&lt;/div&gt;'</span>,
+    prototype : {
+        color : <span class="string">'white'</span>,
+        init : <span class="keyword">function</span>( config ) { <span class="keyword">this</span>.setLabel( config.label ) ... },
+        setLabel : <span class="keyword">function</span>( labelText ) { ... }
+    }
+});
+
+<span class="comment">// Access Your Class variables</span>
+UI.Overlay.threshold    <span class="comment">// =&gt; 10</span>
+UI.Overlay.HTML         <span class="comment">// =&gt; '&lt;div class="overlay"&gt;&lt;/div&gt;'</span>
+
+<span class="comment">// Catch params in the init method: init : function( config )</span>
+<span class="keyword">var</span> overlay = <span class="keyword">new</span> UI.Overlay({ color : <span class="string">'black'</span>, label : <span class="string">'This is my label!'</span> });
+
+<span class="comment">// Use your instance</span>
+overlay.color;          <span class="comment">// =&gt; 'black'</span>
+overlay.color = <span class="string">'red'</span>;
+overlay.setLabel( <span class="string">'Changing the label!'</span> );
+overlay.close();
+
+</code></pre></div>
+
+
+    <!-- how it works -->
+    <h1>Features</h1>
+
+<h3 class="neon-feature"><i class="icon icon-building"></i> <i class="icon icon-hospital"></i> <span>Convenient DSL for creating classes</span></h3>
+
+<p>The syntax for creating classes is very similar with that of other OO
+languages.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nClass(NameSpace, &amp;squ;ClassName&amp;squ;)({\n    classProperty : &amp;squ;value&amp;squ;,\n    prototype : {\n        init : function( initParams ) { ... },\n        instanceMethod : function() { ... }\n    }\n});\n\nvar myInstance = new ClassName( initParams );\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+Class(NameSpace, <span class="string">'ClassName'</span>)({
+    classProperty : <span class="string">'value'</span>,
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... },
+        instanceMethod : <span class="keyword">function</span>() { ... }
+    }
+});
+
+<span class="keyword">var</span> myInstance = <span class="keyword">new</span> ClassName( initParams );
+
+</code></pre></div>
+
+<h3 class="neon-feature"><i class="icon icon-sitemap"></i> <span>Inheritance</span></h3>
+
+<p>Inheritance is pretty much the reason to use OO, so it provides a nice way of
+subclassing. In esence, it's about extending javascript objects with the
+properties of the base class.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nClass(NameSpace, &amp;squ;SubClass&amp;squ;).inherits(NameSpace.SuperClass)({\n    prototype : {\n        init : function( initParams ) { ... } // overwrite SuperClass\n    }\n});\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+Class(NameSpace, <span class="string">'SubClass'</span>).inherits(NameSpace.SuperClass)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... } <span class="comment">// overwrite SuperClass</span>
+    }
+});
+
+</code></pre></div>
+
+<h3 class="neon-feature"> <i class="icon icon-puzzle-piece"></i> <span>Modules (composition)</span></h3>
+
+<p>You can include modules or mixins in your classes. You can extend multiple
+modules in a single class.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nModule(&amp;squ;MyModule&amp;squ;)({\n    prototype : {\n        instanceProperty : false,\n        instanceMethod : function() { ... }\n    }\n});\n\nClass(&amp;squ;MyClass&amp;squ;).includes(MyModule)({\n    prototype : {\n        init : function( initParams ) { ... } // overwrite SuperClass\n    }\n});\n\nvar myInstance = new ClassName( initParams );\nmyInstance.instanceMethod();\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+Module(<span class="string">'MyModule'</span>)({
+    prototype : {
+        instanceProperty : <span class="literal">false</span>,
+        instanceMethod : <span class="keyword">function</span>() { ... }
+    }
+});
+
+Class(<span class="string">'MyClass'</span>).includes(MyModule)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... } <span class="comment">// overwrite SuperClass</span>
+    }
+});
+
+<span class="keyword">var</span> myInstance = <span class="keyword">new</span> ClassName( initParams );
+myInstance.instanceMethod();
+
+</code></pre></div>
+
+
+    <!-- Api -->
+    <h1><i class="icon icon-gears api-icon"></i> API</h1>
+
+<h3 id="api.instatiation">Class and Module instantiation</h3>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nClass([namespace], [className]) // =&gt; Factory\nModule([namespace], [className]) // =&gt; Factory\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+Class([namespace], [className]) <span class="comment">// =&gt; Factory</span>
+Module([namespace], [className]) <span class="comment">// =&gt; Factory</span>
+
+</code></pre></div>
+
+<p>The optional namespace argument is a valid javascript object of which the
+created class will be a property, if no namespace is passed, it will be the
+global object.</p>
+
+<p>The className argument is a string with the name of the class. It's possible
+to not pass a className, in which case the class will have an autogenerated
+name, this is common for creating anonymous classes. Note that you cannot
+have an anonymous class inside a namespace, the first argument will be
+interpreted as the className.</p>
+
+<h3 id="api.definition">Class and Module definition</h3>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nfactory({\n    staticProperties...,\n    prototype : {\n        instanceProperties...\n    }\n}); // =&gt; Class\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+factory({
+    staticProperties...,
+    prototype : {
+        instanceProperties...
+    }
+}); <span class="comment">// =&gt; Class</span>
+
+</code></pre></div>
+
+<p>The class factory is an executable property, which accepts the class definition
+as a parameter.</p>
+
+<p>The objects' properties will be copied by reference as static properties to the
+class.</p>
+
+<p>The <code>prototype</code> property of the class definition will serve as the base
+prorotype for the created objects. In fact, this is the
+<a rel="noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype">standard prototype</a>
+of Javascript. The properties in it will be copied by reference to all created
+objects.</p>
+
+<h3 id="api.initialization">Class initialization</h3>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\ninit : function( ... )\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+init : <span class="keyword">function</span>( ... )
+
+</code></pre></div>
+
+<p>When instantiating classes, they will call the <code>init</code> method defined in them, if
+overriden (It doesn't do anything by default).</p>
+
+<p>To create an instance of an object, use the standard Javascript object
+constructor <code>new</code>. The parameters are passed to the init function</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nvar x = new MyClass()\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+<span class="keyword">var</span> x = <span class="keyword">new</span> MyClass()
+
+</code></pre></div>
+
+<h3 id="api.initialization">Class properties</h3>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nMyClass.className // =&gt; Returns the name of the class\nMyClass.superClass // =&gt; Returns the actual parent class\nmyInstance.constructor // =&gt; Returns a reference to the object&amp;squ;s class\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+MyClass.className <span class="comment">// =&gt; Returns the name of the class</span>
+MyClass.superClass <span class="comment">// =&gt; Returns the actual parent class</span>
+myInstance.constructor <span class="comment">// =&gt; Returns a reference to the object's class</span>
+
+</code></pre></div>
+
+<h3 id="api.initialization">Caveats</h3>
+
+<p>Be aware that since javascript's prototype works by reference, all non primitive
+values will point to the parent's prototype. To avoid this, make sure you assign
+a new value to those properties after initialization</p>
+
+<h2 id="api.initialization">What it doesn't do</h2>
+
+<h6> <p><code>super</code> calls</p> </h6>
+<p>The reasoning behind not including the <code>super</code> functionality is that it requires
+introspection. Even though it's possible, the library tries not to mess with the
+Javascript way of doing things. If you need to call the same method of a parent
+class, you can use the function property of the prototype and call it yourself,
+e.g.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nmyMethod : function(params) {\n    ParentClass.prototype.myMethod.call(this, params);\n}\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+myMethod : <span class="keyword">function</span>(params) {
+    ParentClass.prototype.myMethod.call(<span class="keyword">this</span>, params);
+}
+
+</code></pre></div>
+
+<h6> <p><code>private</code> scoping</p> </h6>
+<p>When working in pure Javascript or using the Node module system, it's easy to hide
+functions by keeping them as a inner closures and not adding them to the
+prototype of the class. Neon does not have this functionality, since the classes
+are just wrapped objects and javascript does not have a way to hide properties
+However, the suggested convention is to name your private methods with an
+underscore as the first character (e.g. _myMethod) to indicate that the method
+is private.</p>
+
+
+    <!-- StdLib -->
+    <h1>Neon Standard Library</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, pariatur, atque, labore, veniam incidunt cumque nam dolorem praesentium ratione assumenda quas at adipisci obcaecati animi vitae recusandae quae commodi modi.</p>
+
+<div class="stdlib-tabs">
+
+    <ul class="stdlib-intro-table">
+        <li>
+            <a href="#stdlib.eventSupport">
+                <img src="assets/img/eventSupport.png" alt="Event Support">
+                <div></div>
+                <h2>Event Support</h2><span>.js</span>
+            </a>
+        </li>
+        <li>
+            <a href="#stdlib.nodeSupport">
+                <img src="assets/img/nodeSupport.png" alt="Node Support">
+                <div></div>
+                <h2>Node Support</h2><span>.js</span>
+            </a>
+        </li>
+        <li>
+            <a href="#stdlib.widget">
+                <img src="assets/img/widget.png" alt="Widget">
+                <div></div>
+                <h2>Widget</h2><span>.js</span>
+            </a>
+        </li>
+        <div class="clearfix"></div>
+    </ul>
+
+
+    <div id="stdlib.eventSupport">
+        <h2>Event Support<span>.js</span></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, modi, perferendis, rem, maxime tempore hic veritatis itaque error consequuntur dolor facilis quos minus inventore et officia a cum iusto tenetur.</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n//TODO: Real code\nmyMethod : function(params) {\n    ParentClass.prorotype.myMethod.call(this, params);\n}\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+<span class="comment">//TODO: Real code</span>
+myMethod : <span class="keyword">function</span>(params) {
+    ParentClass.prorotype.myMethod.call(<span class="keyword">this</span>, params);
+}
+
+</code></pre></div>
+    </div>
+
+    <div id="stdlib.nodeSupport">
+        <h2>Node Support<span>.js</span></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, modi, perferendis, rem, maxime tempore hic veritatis itaque error consequuntur dolor facilis quos minus inventore et officia a cum iusto tenetur.</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n//TODO: Real code\nmyMethod : function(params) {\n    ParentClass.prorotype.myMethod.call(this, params);\n}\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+<span class="comment">//TODO: Real code</span>
+myMethod : <span class="keyword">function</span>(params) {
+    ParentClass.prorotype.myMethod.call(<span class="keyword">this</span>, params);
+}
+
+</code></pre></div>
+    </div>
+
+    <div id="stdlib.widget">
+        <h2>Widget<span>.js</span></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, modi, perferendis, rem, maxime tempore hic veritatis itaque error consequuntur dolor facilis quos minus inventore et officia a cum iusto tenetur.</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n//TODO: Real code\nmyMethod : function(params) {\n    ParentClass.prorotype.myMethod.call(this, params);\n}\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+<span class="comment">//TODO: Real code</span>
+myMethod : <span class="keyword">function</span>(params) {
+    ParentClass.prorotype.myMethod.call(<span class="keyword">this</span>, params);
+}
+
+</code></pre></div>
+    </div>
+
+</div> <!-- stdlib-tabs -->
+
+    <!-- last notes -->
+    <h1>Final notes</h1>
+
+<h2>So, why build another Class library system?</h2>
+<p>Neon has been around since 2010, a time where many class libraries
+were still being developed. Naturally, many of them were released simultaneousley
+(especially after the spike in node usage.)
+More to the point, Neon was created in order to make frontend coding more
+accesible to backend developers, who already knew OO languages such as Ruby or
+PHP, likewise, it had the objective creating a common language in which they
+could communicate.
+Neon does not try to emulate other languages and preserves the good parts of
+Javascript, with a little bit of syntax sugar.</p>
+    
+</div>
+    </div>
+        
+        <!-- footer -->
+    <div class="footer">
+        Neon created by <a href="http://twitter.com/azendal">Azendal</a> at <a href="http://freshout.us">Freshout</a>
+
+<span class="cd-disclamer">
+Page crafted using <a href="http://escusado.github.io/cadmium">Cadmium (Cd)</a>
+</span>
+    </div>
+</body>
+</html>
