@@ -1,14 +1,75 @@
-<h2>Event Support<span>.js</span></h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, modi, perferendis, rem, maxime tempore hic veritatis itaque error consequuntur dolor facilis quos minus inventore et officia a cum iusto tenetur.</p>
+<h2>Event Support<span>.js</span>(Custom Event Support)</h2>
+
+<p>In javascript <a href="http://en.wikipedia.org/wiki/Event-driven_programming">event-based programming</a> is really important, it will help you code stay decouple while building complex programs.<p>
+
+<p>To be able to program in a Event Based way with neon, you can turn each Neon Object into a Event Emitter Class.</p>
+
+<p>First you need to add 2 scripts to you application after the Neon.js script.</p>
 <%= Cd.printCode( function(){ %>
 ```javascript
-//TODO: Real code
-myMethod : function(params) {
-    ParentClass.prorotype.myMethod.call(this, params);
-}
+        <script type="text/javascript" src="CustomEvent.js"></script>
+        <script type="text/javascript" src="CustomEventSupport.js"></script>
 
 ```
 <% }) %>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, perspiciatis, nulla, explicabo pariatur repudiandae tempore at eum dicta laborum sapiente fuga voluptatibus cumque distinctio excepturi itaque dignissimos magni alias asperiores?</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, perspiciatis, nulla, explicabo pariatur repudiandae tempore at eum dicta laborum sapiente fuga voluptatibus cumque distinctio excepturi itaque dignissimos magni alias asperiores?</p>
+<p>This 2 scripts will load a class called CustomEvent and a module CustomEventSupport, this module can be added to any class on you existing Neonjs app.</p>
+
+<p>To convert any Neon.js Class into a Event Emitter Class just add the module to you class using includes.</p>
+
+<%= Cd.printCode( function(){ %>
+```javascript
+Class('MyClass').includes(CustomEventSupport)({
+    prototype : {
+        init : function( initParams ) { ... }
+    }
+});
+
+```
+<% }) %>
+
+<p>This way you class and the objects created with the class constructor will have new 3 methods.</p>
+
+<ul>
+	<li><b>bind</b>: allows you to listen a event of the class or instance.</li>
+	<li><b>unbind</b>: allows you to spot listening a event from the class.</li>
+	<li><b>dispatch</b>: allows you to dispatch a event, all the functions that are register as listeners of this event at the moment will be called.</li>
+</ul>
+
+<p>Warning: unbinding a event requires to pass the funcion pointer that was binded, if null is passed, all binding to that event will be remove. This is because of the especification of addLstener</p>
+
+<p>For more information about Custom events in JavaScript check <a href="http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/">http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/</a></p>
+
+<p>Neon events are build based on W3C spec for events, it can be check here:<a href="http://www.w3.org/TR/DOM-Level-3-Events/">http://www.w3.org/TR/DOM-Level-3-Events/</a></p>
+
+<p><b>Example</b></p>
+<p>In this example we changed the postion of a point, the idea is that other component will have a reference to the point and will be able to have behaivor for when the point changes, repaint the point in a map or calculate something based on the new information.</p>
+<%= Cd.printCode( function(){ %>
+```javascript
+Class('Point').includes(CustomEventSupport)({
+    prototype : {
+    	x : 0,
+    	y : 0,
+        init : function(x, y) {
+        	this.x = x;
+        	this.y = y;
+        },
+        setPosition : function(x,y){
+        	this.x = x;
+        	this.y = y;        
+
+        	this.dispatch('changed');
+        }
+    }
+});
+
+var point = new Point(1,4);
+
+point.bind('changed', function(){
+	console.log('point has changed');
+});
+
+point.setPosition(2, 4);
+
+```
+<% }) %>

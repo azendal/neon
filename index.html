@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Neon.js</title>
     <!-- favicon -->
-    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=46d6" />
+    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=77c5" />
     <!-- cdn -->
     
     <!-- css -->
@@ -326,18 +326,76 @@ is private.</p>
 
     <div class="stdlib-content-wrapper">
         <div class="stdlib-content stdlib-eventSupport">
-            <h2>Event Support<span>.js</span></h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, modi, perferendis, rem, maxime tempore hic veritatis itaque error consequuntur dolor facilis quos minus inventore et officia a cum iusto tenetur.</p>
-<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n//TODO: Real code\nmyMethod : function(params) {\n    ParentClass.prorotype.myMethod.call(this, params);\n}\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
-<span class="comment">//TODO: Real code</span>
-myMethod : <span class="keyword">function</span>(params) {
-    ParentClass.prorotype.myMethod.call(<span class="keyword">this</span>, params);
-}
+            <h2>Event Support<span>.js</span>(Custom Event Support)</h2>
+
+<p>In javascript <a href="http://en.wikipedia.org/wiki/Event-driven_programming">event-based programming</a> is really important, it will help you code stay decouple while building complex programs.<p>
+
+<p>To be able to program in a Event Based way with neon, you can turn each Neon Object into a Event Emitter Class.</p>
+
+<p>First you need to add 2 scripts to you application after the Neon.js script.</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n        &lt;script type=&amp;dqu;text/javascript&amp;dqu; src=&amp;dqu;CustomEvent.js&amp;dqu;&gt;&lt;/script&gt;\n        &lt;script type=&amp;dqu;text/javascript&amp;dqu; src=&amp;dqu;CustomEventSupport.js&amp;dqu;&gt;&lt;/script&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+        &lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"CustomEvent.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"CustomEventSupport.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+
+</span></code></pre></div>
+
+<p>This 2 scripts will load a class called CustomEvent and a module CustomEventSupport, this module can be added to any class on you existing Neonjs app.</p>
+
+<p>To convert any Neon.js Class into a Event Emitter Class just add the module to you class using includes.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nClass(&amp;squ;MyClass&amp;squ;).includes(CustomEventSupport)({\n    prototype : {\n        init : function( initParams ) { ... }\n    }\n});\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+Class(<span class="string">'MyClass'</span>).includes(CustomEventSupport)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... }
+    }
+});
 
 </code></pre></div>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, perspiciatis, nulla, explicabo pariatur repudiandae tempore at eum dicta laborum sapiente fuga voluptatibus cumque distinctio excepturi itaque dignissimos magni alias asperiores?</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, perspiciatis, nulla, explicabo pariatur repudiandae tempore at eum dicta laborum sapiente fuga voluptatibus cumque distinctio excepturi itaque dignissimos magni alias asperiores?</p>
+<p>This way you class and the objects created with the class constructor will have new 3 methods.</p>
+
+<ul>
+	<li><b>bind</b>: allows you to listen a event of the class or instance.</li>
+	<li><b>unbind</b>: allows you to spot listening a event from the class.</li>
+	<li><b>dispatch</b>: allows you to dispatch a event, all the functions that are register as listeners of this event at the moment will be called.</li>
+</ul>
+
+<p>Warning: unbinding a event requires to pass the funcion pointer that was binded, if null is passed, all binding to that event will be remove. This is because of the especification of addLstener</p>
+
+<p>For more information about Custom events in JavaScript check <a href="http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/">http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/</a></p>
+
+<p>Neon events are build based on W3C spec for events, it can be check here:<a href="http://www.w3.org/TR/DOM-Level-3-Events/">http://www.w3.org/TR/DOM-Level-3-Events/</a></p>
+
+<p><b>Example</b></p>
+<p>In this example we changed the postion of a point, the idea is that other component will have a reference to the point and will be able to have behaivor for when the point changes, repaint the point in a map or calculate something based on the new information.</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nClass(&amp;squ;Point&amp;squ;).includes(CustomEventSupport)({\n    prototype : {\n    	x : 0,\n    	y : 0,\n        init : function(x, y) {\n        	this.x = x;\n        	this.y = y;\n        },\n        setPosition : function(x,y){\n        	this.x = x;\n        	this.y = y;        \n\n        	this.dispatch(&amp;squ;changed&amp;squ;);\n        }\n    }\n});\n\nvar point = new Point(1,4);\n\npoint.bind(&amp;squ;changed&amp;squ;, function(){\n	console.log(&amp;squ;point has changed&amp;squ;);\n});\n\npoint.setPosition(2, 4);\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+Class(<span class="string">'Point'</span>).includes(CustomEventSupport)({
+    prototype : {
+    	x : <span class="number">0</span>,
+    	y : <span class="number">0</span>,
+        init : <span class="keyword">function</span>(x, y) {
+        	<span class="keyword">this</span>.x = x;
+        	<span class="keyword">this</span>.y = y;
+        },
+        setPosition : <span class="keyword">function</span>(x,y){
+        	<span class="keyword">this</span>.x = x;
+        	<span class="keyword">this</span>.y = y;        
+
+        	<span class="keyword">this</span>.dispatch(<span class="string">'changed'</span>);
+        }
+    }
+});
+
+<span class="keyword">var</span> point = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">4</span>);
+
+point.bind(<span class="string">'changed'</span>, <span class="keyword">function</span>(){
+	console.log(<span class="string">'point has changed'</span>);
+});
+
+point.setPosition(<span class="number">2</span>, <span class="number">4</span>);
+
+</code></pre></div>
+
         </div>
 
         <div class="stdlib-content stdlib-nodeSupport">
