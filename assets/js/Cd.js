@@ -27,7 +27,7 @@ Class('Cadmium')({
 
     stdlibTabs : function(){
         var stdLibEl = this.element.find('.stdlib-tabs'),
-            tabs     = stdLibEl.find('ul li'),
+            tabs     = stdLibEl.find('ul.stdlib-intro-table li'),
             contentW = stdLibEl.find('.stdlib-content-wrapper'),
             content  = stdLibEl.find('.stdlib-content');
         

@@ -1,12 +1,14 @@
 <h2>Event Support<span>.js</span>(Custom Event Support)</h2>
 
-<p>In javascript <a href="http://en.wikipedia.org/wiki/Event-driven_programming">event-based programming</a> is really important, it will help you code stay decouple while building complex programs.<p>
+<p>In javascript <a href="http://en.wikipedia.org/wiki/Event-driven_programming">event-based programming</a> is really important and one of the main patterns used to communicate components, it helps your code to stay decoupled while building complex programs.<p>
 
-<p>To be able to program in a Event Based way with neon, you can turn each Neon Object into a Event Emitter Class.</p>
+<p>Using EventSupport.js you can let your Neon objects become Event Emitters, so you can send and receive data.</p>
+
+<h3>Usage</h3>
 
 <p>First you need to add 2 scripts to you application after the Neon.js script.</p>
 <%= Cd.printCode( function(){ %>
-```javascript
+```django
         <script type="text/javascript" src="CustomEvent.js"></script>
         <script type="text/javascript" src="CustomEventSupport.js"></script>
 
@@ -15,7 +17,7 @@
 
 <p>This 2 scripts will load a class called CustomEvent and a module CustomEventSupport, this module can be added to any class on you existing Neonjs app.</p>
 
-<p>To convert any Neon.js Class into a Event Emitter Class just add the module to you class using includes.</p>
+<p>To convert any Neon.js Class into a Event Emitter Class just add the module to you class using <code>includes</code>.</p>
 
 <%= Cd.printCode( function(){ %>
 ```javascript
@@ -28,48 +30,149 @@ Class('MyClass').includes(CustomEventSupport)({
 ```
 <% }) %>
 
-<p>This way you class and the objects created with the class constructor will have new 3 methods.</p>
+<p>This way your class and its instances will have new 3 new methods: <code>bind</code>, <code>unbind</code> and <code>dispatch</code> </p>
 
-<ul>
-	<li><b>bind</b>: allows you to listen a event of the class or instance.</li>
-	<li><b>unbind</b>: allows you to spot listening a event from the class.</li>
-	<li><b>dispatch</b>: allows you to dispatch a event, all the functions that are register as listeners of this event at the moment will be called.</li>
+<h3>Api</h3>
+
+<ul class="stdlib-es-api">
+    <li> <div class="title"> <i class="icon-retweet"></i> <b><code>bind</code></b> </div>
+        Allows you to listen a event of the class or instance.
+
+<%= Cd.printCode( function(){ %>
+```javascript
+
+...
+    //let's bind to an Custom Event supported object
+    myEmmiter.bind('my-event-name', function( ev ){
+        console.log('My data: ', ev.data);
+    });
+...
+    
+//Somewhere else:
+...
+    //now let's emmit some events
+    myEmmiter.dispatch('my-event-name', {data: 'has been transmited!'});
+...
+
+```
+<% }) %>
+
+    </li>
+    <li>
+        <div class="title"> <i class="icon-cut"></i> <b><code>unbind</code></b> </div>
+        Allows you to spot listening a event from the class.
+    
+        <p><strong>Regular unbinding</strong></p>
+<%= Cd.printCode( function(){ %>
+```javascript
+    //Ok let's bind to an Custom Event supported object
+    myEmmiter.bind('my-event-name', function( ev ){
+        console.log('My data: ', ev.data);
+    });
+
+    //Ok I don't want to hear to this event anymore
+    myEmmiter.unbind('my-event-name');
+    });
+
+```
+<% }) %>
+
+        <p><strong>Selective unbinding</strong></p>
+<%= Cd.printCode( function(){ %>
+```javascript
+    //create our callback
+    var handler = function( ev ){
+        console.log('This will not be called after the selective unbind');
+    }
+    
+    //bind it
+    myEmmiter.bind('my-event-name', handler);
+
+    //Regular bind
+    myEmmiter.bind('my-event-name', function(ev){
+        console.log('This will still work after the selective unbind');
+    });
+    
+    //now let's just unbind this listener passing the binded handler
+    myEmmiter.unbind('my-event-name', handler);
+
+```
+<% }) %>
+
+        <small><p><strong>Warning:</strong> As you see, to selectively unbind listeners you need to to pass the handler funcion pointer that was binded, if <code>null</code> is passed, all bindings to that event will be removed. <a href="http://www.w3.org/TR/DOM-Level-2-Events/ecma-script-binding.html"> This complies to ECMA spec. </a></p></small>
+    </li>
+
+    <li>
+        <div class="title"> <i class="icon-bullhorn"></i> <b><code>dispatch</code></b></div>
+
+        Allows you to dispatch a event, all the functions that are register as listeners of this event at the moment will be called.
+<%= Cd.printCode( function(){ %>
+```javascript
+    //Let's bind
+    myEmmiter.bind('my-event-name', function(ev){
+        console.log('This will still work after the selective unbind');
+    });
+    
+    //Let's emmit
+    myEmmiter.dispatch('my-event-name', {data: 'has been transmited!'});
+
+```
+<% }) %>
+    <p> <code>dispatch</code> will extend itself using the second parameter in this case <code>{data: value}</code> we recommend using this kind of construct to create your events, always try to pass all your event information using a <code>data</code> index in an object.</p>
+
+    </li>
 </ul>
 
-<p>Warning: unbinding a event requires to pass the funcion pointer that was binded, if null is passed, all binding to that event will be remove. This is because of the especification of addLstener</p>
+<h3>Example</h3>
 
-<p>For more information about Custom events in JavaScript check <a href="http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/">http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/</a></p>
-
-<p>Neon events are build based on W3C spec for events, it can be check here:<a href="http://www.w3.org/TR/DOM-Level-3-Events/">http://www.w3.org/TR/DOM-Level-3-Events/</a></p>
-
-<p><b>Example</b></p>
-<p>In this example we changed the postion of a point, the idea is that other component will have a reference to the point and will be able to have behaivor for when the point changes, repaint the point in a map or calculate something based on the new information.</p>
+<p>In this example we changed the postion of a point, and bind other component to the change, this allows the binded component to trigger behaivor when the point emmits the <code>changed</code> so then we can repaint the point in a map or calculate something based on the new information.</p>
 <%= Cd.printCode( function(){ %>
 ```javascript
 Class('Point').includes(CustomEventSupport)({
     prototype : {
-    	x : 0,
-    	y : 0,
+        x : 0,
+        y : 0,
         init : function(x, y) {
-        	this.x = x;
-        	this.y = y;
+            this.x = x;
+            this.y = y;
         },
         setPosition : function(x,y){
-        	this.x = x;
-        	this.y = y;        
-
-        	this.dispatch('changed');
+            this.x = x;
+            this.y = y;        
+            //emmit event
+            this.dispatch('changed', {data: {x: x, y: y} });
         }
     }
 });
 
 var point = new Point(1,4);
 
-point.bind('changed', function(){
-	console.log('point has changed');
+//bind to the event
+point.bind('changed', function(ev){
+    console.log('point has changed with coordinates: ', 'x: '+ ev.data.x, 'y: '+ ev.data.y);
 });
 
+//set things in motion
 point.setPosition(2, 4);
 
 ```
 <% }) %>
+
+<p>Custom Event Support also adds the events API to the class itself:</p>
+<%= Cd.printCode( function(){ %>
+```javascript
+Class('MyClass').includes(CustomEventSupport)({...});
+
+...
+
+MyClass.dispatch(...);
+
+```
+<% }) %>
+
+<small>
+<p>
+    For more information about Custom events in JavaScript check: <a href="http://www.nczonline.net/blog/2010/03/09/custom-events-in-javascript/">Custom events in JavaScript</a>.
+    Neon events are build based on W3C spec for events, it can be check here:<a href="http://www.w3.org/TR/DOM-Level-3-Events/">Document Object Model (DOM) Level 3 Events Specification</a>
+</p>
+</small>

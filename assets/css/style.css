@@ -379,3 +379,13 @@ p code{
 .stdlib-intro-table li.active span {
   color       : #ed0700;
 }
+
+.stdlib-es-api li{
+  list-style: none;
+  margin-bottom: 25px;
+}
+
+.stdlib-es-api li .title{
+  font-size: 24px;
+  margin-left: -20px;
+}
