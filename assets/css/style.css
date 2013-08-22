@@ -264,6 +264,7 @@ p code{
   width       : 420px; 
   height      : 60px; 
   padding-top : 16px;
+    color          : #E43000;
 }
 
 .get-code-button:active {
@@ -277,10 +278,11 @@ p code{
 }
 
 .get-code-button span{
-  font-family    : 'NokiaCellphoneFC-Small',sans-serif;
+  font-family    : "Montserrat", sans-serif;
   font-weight    : normal;
-  font-size      : 22px;
+  font-size      : 29px;
   letter-spacing : -1px;
+
 }
 
 /* Features */
