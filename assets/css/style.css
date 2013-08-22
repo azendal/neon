@@ -166,6 +166,15 @@ h6:before { background-color: undefined; }
   font-size : 20px;
 }
 
+/*
+behavior injection
+OOP like behavior
+Extensible
+it is your same ol' javascript
+Really small footprint
+chainable (because javascript)
+constructor class calls (not super)
+*/
 
 /***************************************** Code boxes */
 /* main code boxes */
