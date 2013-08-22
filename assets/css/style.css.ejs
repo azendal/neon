@@ -213,11 +213,16 @@ h6:before { background-color: <%= colors.sixth %>; }
   position        : relative;
 }
 
+.code-highlight pre {
+    white-space: pre;
+    word-wrap : normal;
+}
+
 .code-highlight code{
   font-size : 12px;
   padding   : 0 15px;
   min-height: 51px;
-  
+  overflow: auto;
   background    : <%= colors.codeBg %>;
   border-radius : 5px;
 }
