@@ -1,6 +1,6 @@
 <h2>Node Support<span>.js</span></h2>
 <p>Node support lets you create a logic tree in an API glance of your classes and instances.</p>
-<p>The idea behind node support is to keep your logic connected but separated, using dot notation to acces the tree:</p>
+<p>The idea behind node support is to keep your logic connected but separated, using dot notation to navigate the tree:</p>
 
 
 <%= Cd.printCode( function(){ %>
@@ -50,8 +50,9 @@ Class('MyClass').includes(NodeSupport)({
 <h3>Api</h3>
 
 <ul class="stdlib-es-api">
-    <li> <div class="title"><b><code>appendChild([nodeSupported instance])</code></b> </div>
-        Allows to append a node into another node.
+    <li> <div class="title"><b><code>appendChild([child])</code></b> </div>
+
+		<p>Allows to append a node into another node.</p>
 
 <%= Cd.printCode( function(){ %>
 ```javascript
@@ -74,4 +75,192 @@ parentNode.children[0];
 <% }) %>
 
     </li>
+
+    <li> <div class="title"><b><code>insertBefore([child], [beforeChild])</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<%= Cd.printCode( function(){ %>
+```javascript
+
+Class('MyNodeSupportedClass').includes(NodeSupport)({
+    prototype : {
+        init : function( initParams ) { ... }
+    }
+});
+
+var parentNode = new MyNodeSupportedClass();
+
+parentNode.appendChild( new MyNodeSupportedClass() );
+
+//The child node will be added to the children array
+parentNode.children[0];
+
+
+```
+<% }) %>
+
+    </li>
+
+
+    <li> <div class="title"><b><code>removeChild([child])</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<%= Cd.printCode( function(){ %>
+```javascript
+
+Class('MyNodeSupportedClass').includes(NodeSupport)({
+    prototype : {
+        init : function( initParams ) { ... }
+    }
+});
+
+var parentNode = new MyNodeSupportedClass();
+
+parentNode.appendChild( new MyNodeSupportedClass() );
+
+//The child node will be added to the children array
+parentNode.children[0];
+
+
+```
+<% }) %>
+
+    </li>
+
+    <li> <div class="title"><b><code>setParent([parent])</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<%= Cd.printCode( function(){ %>
+```javascript
+
+Class('MyNodeSupportedClass').includes(NodeSupport)({
+    prototype : {
+        init : function( initParams ) { ... }
+    }
+});
+
+var parentNode = new MyNodeSupportedClass();
+
+parentNode.appendChild( new MyNodeSupportedClass() );
+
+//The child node will be added to the children array
+parentNode.children[0];
+
+
+```
+<% }) %>
+
+    </li>
+
+    <li> <div class="title"><b><code>getDescendants()</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<%= Cd.printCode( function(){ %>
+```javascript
+
+Class('MyNodeSupportedClass').includes(NodeSupport)({
+    prototype : {
+        init : function( initParams ) { ... }
+    }
+});
+
+var parentNode = new MyNodeSupportedClass();
+
+parentNode.appendChild( new MyNodeSupportedClass() );
+
+//The child node will be added to the children array
+parentNode.children[0];
+
+
+```
+<% }) %>
+
+    </li>
+
+    <li> <div class="title"><b><code>getPreviousSibling()</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<%= Cd.printCode( function(){ %>
+```javascript
+
+Class('MyNodeSupportedClass').includes(NodeSupport)({
+    prototype : {
+        init : function( initParams ) { ... }
+    }
+});
+
+var parentNode = new MyNodeSupportedClass();
+
+parentNode.appendChild( new MyNodeSupportedClass() );
+
+//The child node will be added to the children array
+parentNode.children[0];
+
+
+```
+<% }) %>
+
+    </li>
+
+    <li> <div class="title"><b><code>getNexSibling()</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<%= Cd.printCode( function(){ %>
+```javascript
+
+Class('MyNodeSupportedClass').includes(NodeSupport)({
+    prototype : {
+        init : function( initParams ) { ... }
+    }
+});
+
+var parentNode = new MyNodeSupportedClass();
+
+parentNode.appendChild( new MyNodeSupportedClass() );
+
+//The child node will be added to the children array
+parentNode.children[0];
+
+
+```
+<% }) %>
+
+    </li>
+
 </ul>

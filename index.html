@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Neon.js</title>
     <!-- favicon -->
-    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=f2f0" />
+    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=2104" />
     <!-- cdn -->
     
     <!-- css -->
@@ -537,8 +537,9 @@ Class(<span class="string">'MyClass'</span>).includes(NodeSupport)({
 <h3>Api</h3>
 
 <ul class="stdlib-es-api">
-    <li> <div class="title"> <i class="icon-retweet"></i> <b><code>appendChild([nodeSupported instance])</code></b> </div>
-        Allows to append a node into another node.
+    <li> <div class="title"><b><code>appendChild([child])</code></b> </div>
+
+		<p>Allows to append a node into another node.</p>
 
 <div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n\nClass(&amp;squ;MyNodeSupportedClass&amp;squ;).includes(NodeSupport)({\n    prototype : {\n        init : function( initParams ) { ... }\n    }\n});\n\nvar parentNode = new MyNodeSupportedClass();\n\nparentNode.appendChild( new MyNodeSupportedClass() );\n\n//The child node will be added to the children array\nparentNode.children[0];\n\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
 
@@ -559,6 +560,182 @@ parentNode.children[<span class="number">0</span>];
 </code></pre></div>
 
     </li>
+
+    <li> <div class="title"><b><code>insertBefore([child], [beforeChild])</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n\nClass(&amp;squ;MyNodeSupportedClass&amp;squ;).includes(NodeSupport)({\n    prototype : {\n        init : function( initParams ) { ... }\n    }\n});\n\nvar parentNode = new MyNodeSupportedClass();\n\nparentNode.appendChild( new MyNodeSupportedClass() );\n\n//The child node will be added to the children array\nparentNode.children[0];\n\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+
+Class(<span class="string">'MyNodeSupportedClass'</span>).includes(NodeSupport)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... }
+    }
+});
+
+<span class="keyword">var</span> parentNode = <span class="keyword">new</span> MyNodeSupportedClass();
+
+parentNode.appendChild( <span class="keyword">new</span> MyNodeSupportedClass() );
+
+<span class="comment">//The child node will be added to the children array</span>
+parentNode.children[<span class="number">0</span>];
+
+
+</code></pre></div>
+
+    </li>
+
+
+    <li> <div class="title"><b><code>removeChild([child])</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n\nClass(&amp;squ;MyNodeSupportedClass&amp;squ;).includes(NodeSupport)({\n    prototype : {\n        init : function( initParams ) { ... }\n    }\n});\n\nvar parentNode = new MyNodeSupportedClass();\n\nparentNode.appendChild( new MyNodeSupportedClass() );\n\n//The child node will be added to the children array\nparentNode.children[0];\n\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+
+Class(<span class="string">'MyNodeSupportedClass'</span>).includes(NodeSupport)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... }
+    }
+});
+
+<span class="keyword">var</span> parentNode = <span class="keyword">new</span> MyNodeSupportedClass();
+
+parentNode.appendChild( <span class="keyword">new</span> MyNodeSupportedClass() );
+
+<span class="comment">//The child node will be added to the children array</span>
+parentNode.children[<span class="number">0</span>];
+
+
+</code></pre></div>
+
+    </li>
+
+    <li> <div class="title"><b><code>setParent([parent])</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n\nClass(&amp;squ;MyNodeSupportedClass&amp;squ;).includes(NodeSupport)({\n    prototype : {\n        init : function( initParams ) { ... }\n    }\n});\n\nvar parentNode = new MyNodeSupportedClass();\n\nparentNode.appendChild( new MyNodeSupportedClass() );\n\n//The child node will be added to the children array\nparentNode.children[0];\n\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+
+Class(<span class="string">'MyNodeSupportedClass'</span>).includes(NodeSupport)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... }
+    }
+});
+
+<span class="keyword">var</span> parentNode = <span class="keyword">new</span> MyNodeSupportedClass();
+
+parentNode.appendChild( <span class="keyword">new</span> MyNodeSupportedClass() );
+
+<span class="comment">//The child node will be added to the children array</span>
+parentNode.children[<span class="number">0</span>];
+
+
+</code></pre></div>
+
+    </li>
+
+    <li> <div class="title"><b><code>getDescendants()</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n\nClass(&amp;squ;MyNodeSupportedClass&amp;squ;).includes(NodeSupport)({\n    prototype : {\n        init : function( initParams ) { ... }\n    }\n});\n\nvar parentNode = new MyNodeSupportedClass();\n\nparentNode.appendChild( new MyNodeSupportedClass() );\n\n//The child node will be added to the children array\nparentNode.children[0];\n\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+
+Class(<span class="string">'MyNodeSupportedClass'</span>).includes(NodeSupport)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... }
+    }
+});
+
+<span class="keyword">var</span> parentNode = <span class="keyword">new</span> MyNodeSupportedClass();
+
+parentNode.appendChild( <span class="keyword">new</span> MyNodeSupportedClass() );
+
+<span class="comment">//The child node will be added to the children array</span>
+parentNode.children[<span class="number">0</span>];
+
+
+</code></pre></div>
+
+    </li>
+
+    <li> <div class="title"><b><code>getPreviousSibling()</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n\nClass(&amp;squ;MyNodeSupportedClass&amp;squ;).includes(NodeSupport)({\n    prototype : {\n        init : function( initParams ) { ... }\n    }\n});\n\nvar parentNode = new MyNodeSupportedClass();\n\nparentNode.appendChild( new MyNodeSupportedClass() );\n\n//The child node will be added to the children array\nparentNode.children[0];\n\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+
+Class(<span class="string">'MyNodeSupportedClass'</span>).includes(NodeSupport)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... }
+    }
+});
+
+<span class="keyword">var</span> parentNode = <span class="keyword">new</span> MyNodeSupportedClass();
+
+parentNode.appendChild( <span class="keyword">new</span> MyNodeSupportedClass() );
+
+<span class="comment">//The child node will be added to the children array</span>
+parentNode.children[<span class="number">0</span>];
+
+
+</code></pre></div>
+
+    </li>
+
+    <li> <div class="title"><b><code>getNexSibling()</code></b> </div>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n\nClass(&amp;squ;MyNodeSupportedClass&amp;squ;).includes(NodeSupport)({\n    prototype : {\n        init : function( initParams ) { ... }\n    }\n});\n\nvar parentNode = new MyNodeSupportedClass();\n\nparentNode.appendChild( new MyNodeSupportedClass() );\n\n//The child node will be added to the children array\nparentNode.children[0];\n\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+
+Class(<span class="string">'MyNodeSupportedClass'</span>).includes(NodeSupport)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... }
+    }
+});
+
+<span class="keyword">var</span> parentNode = <span class="keyword">new</span> MyNodeSupportedClass();
+
+parentNode.appendChild( <span class="keyword">new</span> MyNodeSupportedClass() );
+
+<span class="comment">//The child node will be added to the children array</span>
+parentNode.children[<span class="number">0</span>];
+
+
+</code></pre></div>
+
+    </li>
+
 </ul>
         </div>
 
