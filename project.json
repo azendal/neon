@@ -3,7 +3,7 @@
   "lang"       : "js",
   "author"     : "Azendal",
   "authorLink" : "http://twitter.com/azendal",
-  "desc"       : "Neon is awesome lorem lorem lorem",
+  "desc"       : "Neon is a DSL Class system for Javascript.",
   "url"        : "http://azendal.github.io/neon",
   "githubUrl"  : "https://github.com/azendal/neon",
   "forkColor"  : "orange",

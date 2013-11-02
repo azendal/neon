@@ -1,13 +1,77 @@
 <h2>Node Support<span>.js</span></h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, modi, perferendis, rem, maxime tempore hic veritatis itaque error consequuntur dolor facilis quos minus inventore et officia a cum iusto tenetur.</p>
+<p>Node support lets you create a logic tree in an API glance of your classes and instances.</p>
+<p>The idea behind node support is to keep your logic connected but separated, using dot notation to acces the tree:</p>
+
+
 <%= Cd.printCode( function(){ %>
 ```javascript
-//TODO: Real code
-myMethod : function(params) {
-    ParentClass.prorotype.myMethod.call(this, params);
-}
+//Create the parent class
+var parentInstance = new ClassWithNodeSupport();
+
+//Use Node Support to logically connect instances
+parentInstance.appendChild( new ClassWithNodeSupport({
+		name : 'childNode'
+	})
+);
+
+//Access your nodes using dot notation :)
+parentInstance.childNode.accessMethodsAndProperties();
 
 ```
 <% }) %>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, perspiciatis, nulla, explicabo pariatur repudiandae tempore at eum dicta laborum sapiente fuga voluptatibus cumque distinctio excepturi itaque dignissimos magni alias asperiores?</p>
+<h3>Usage</h3>
+
+<p>First you need to add the NodeSupport script to you application after the Neon.js script.</p>
+<%= Cd.printCode( function(){ %>
+```django
+        <script type="text/javascript" src="NodeSupport.js"></script>
+
+```
+<% }) %>
+
+<p>This script will load a class called NodeSupport, this module can be added to any class on you existing Neonjs app.</p>
+
+<p>To add node support to your class just add the module to you class using <code>includes</code>.</p>
+
+<%= Cd.printCode( function(){ %>
+```javascript
+Class('MyClass').includes(NodeSupport)({
+    prototype : {
+        init : function( initParams ) { ... }
+    }
+});
+
+```
+<% }) %>
+
+<p>This way your class and its instances will have new 7 new methods: <code>appendChild</code>, <code>insertBefore</code>, <code>removeChild</code>, <code>setParent</code>, <code>getDescendants</code>, <code>getPreviousSibling</code>, <code>getNextSibling</code>.</p>
+
+<h3>Api</h3>
+
+<ul class="stdlib-es-api">
+    <li> <div class="title"><b><code>appendChild([nodeSupported instance])</code></b> </div>
+        Allows to append a node into another node.
+
+<%= Cd.printCode( function(){ %>
+```javascript
+
+Class('MyNodeSupportedClass').includes(NodeSupport)({
+    prototype : {
+        init : function( initParams ) { ... }
+    }
+});
+
+var parentNode = new MyNodeSupportedClass();
+
+parentNode.appendChild( new MyNodeSupportedClass() );
+
+//The child node will be added to the children array
+parentNode.children[0];
+
+
+```
+<% }) %>
+
+    </li>
+</ul>

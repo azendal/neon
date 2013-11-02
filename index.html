@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Neon.js</title>
     <!-- favicon -->
-    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=641f" />
+    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=f2f0" />
     <!-- cdn -->
     
     <!-- css -->
@@ -34,7 +34,7 @@
   <a href="http://azendal.github.io/neon">
     <img class="tm-icon" src="assets/img/icon.png" alt="Neon">
     <div class="name">Neon<span>.js</span></div>
-    <div class="description">Neon is awesome lorem lorem lorem</div>
+    <div class="description">Neon is a DSL Class system for Javascript.</div>
   </a>
 </div>
         
@@ -492,16 +492,74 @@ MyClass.dispatch(...);
 
         <div class="stdlib-content stdlib-nodeSupport">
             <h2>Node Support<span>.js</span></h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, modi, perferendis, rem, maxime tempore hic veritatis itaque error consequuntur dolor facilis quos minus inventore et officia a cum iusto tenetur.</p>
-<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n//TODO: Real code\nmyMethod : function(params) {\n    ParentClass.prorotype.myMethod.call(this, params);\n}\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
-<span class="comment">//TODO: Real code</span>
-myMethod : <span class="keyword">function</span>(params) {
-    ParentClass.prorotype.myMethod.call(<span class="keyword">this</span>, params);
-}
+<p>Node support lets you create a logic tree in an API glance of your classes and instances.</p>
+<p>The idea behind node support is to keep your logic connected but separated, using dot notation to acces the tree:</p>
+
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n//Create the parent class\nvar parentInstance = new ClassWithNodeSupport();\n\n//Use Node Support to logically connect instances\nparentInstance.appendChild( new ClassWithNodeSupport({\n		name : &amp;squ;childNode&amp;squ;\n	})\n);\n\n//Access your nodes using dot notation :)\nparentInstance.childNode.accessMethodsAndProperties();\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+<span class="comment">//Create the parent class</span>
+<span class="keyword">var</span> parentInstance = <span class="keyword">new</span> ClassWithNodeSupport();
+
+<span class="comment">//Use Node Support to logically connect instances</span>
+parentInstance.appendChild( <span class="keyword">new</span> ClassWithNodeSupport({
+		name : <span class="string">'childNode'</span>
+	})
+);
+
+<span class="comment">//Access your nodes using dot notation :)</span>
+parentInstance.childNode.accessMethodsAndProperties();
 
 </code></pre></div>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, perspiciatis, nulla, explicabo pariatur repudiandae tempore at eum dicta laborum sapiente fuga voluptatibus cumque distinctio excepturi itaque dignissimos magni alias asperiores?</p>
+<h3>Usage</h3>
+
+<p>First you need to add the NodeSupport script to you application after the Neon.js script.</p>
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n        &lt;script type=&amp;dqu;text/javascript&amp;dqu; src=&amp;dqu;NodeSupport.js&amp;dqu;&gt;&lt;/script&gt;\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="django">
+        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"NodeSupport.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+
+</code></pre></div>
+
+<p>This script will load a class called NodeSupport, this module can be added to any class on you existing Neonjs app.</p>
+
+<p>To add node support to your class just add the module to you class using <code>includes</code>.</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nClass(&amp;squ;MyClass&amp;squ;).includes(NodeSupport)({\n    prototype : {\n        init : function( initParams ) { ... }\n    }\n});\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+Class(<span class="string">'MyClass'</span>).includes(NodeSupport)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... }
+    }
+});
+
+</code></pre></div>
+
+<p>This way your class and its instances will have new 7 new methods: <code>appendChild</code>, <code>insertBefore</code>, <code>removeChild</code>, <code>setParent</code>, <code>getDescendants</code>, <code>getPreviousSibling</code>, <code>getNextSibling</code>.</p>
+
+<h3>Api</h3>
+
+<ul class="stdlib-es-api">
+    <li> <div class="title"> <i class="icon-retweet"></i> <b><code>appendChild([nodeSupported instance])</code></b> </div>
+        Allows to append a node into another node.
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n\nClass(&amp;squ;MyNodeSupportedClass&amp;squ;).includes(NodeSupport)({\n    prototype : {\n        init : function( initParams ) { ... }\n    }\n});\n\nvar parentNode = new MyNodeSupportedClass();\n\nparentNode.appendChild( new MyNodeSupportedClass() );\n\n//The child node will be added to the children array\nparentNode.children[0];\n\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+
+Class(<span class="string">'MyNodeSupportedClass'</span>).includes(NodeSupport)({
+    prototype : {
+        init : <span class="keyword">function</span>( initParams ) { ... }
+    }
+});
+
+<span class="keyword">var</span> parentNode = <span class="keyword">new</span> MyNodeSupportedClass();
+
+parentNode.appendChild( <span class="keyword">new</span> MyNodeSupportedClass() );
+
+<span class="comment">//The child node will be added to the children array</span>
+parentNode.children[<span class="number">0</span>];
+
+
+</code></pre></div>
+
+    </li>
+</ul>
         </div>
 
         <div class="stdlib-content stdlib-widget">
