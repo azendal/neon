@@ -1,7 +1,7 @@
 {
 	"name"    : "neon",
 	"version" : "1.0.1",
-	"main"    : "./neon",
+	"main"    : "./lib/neon",
 	"repository": {
 		"type" : "git",
 		"url"  : "https://github.com/azendal/neon.git"
