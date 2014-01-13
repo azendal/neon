@@ -1,10 +1,11 @@
 {
-	"name"    : "neon",
-	"version" : "1.1.0",
-	"main"    : "./lib/neon",
-	"repository": {
-		"type" : "git",
-		"url"  : "https://github.com/azendal/neon.git"
-	},
-	"keywords": ["class", "prototype", "inheritance", "oop"]
+    "name"    : "neon",
+    "version" : "1.1.0",
+    "description" : "Javascript DSL for Classical Inheritance",
+    "main"    : "./lib/neon",
+    "repository": {
+        "type" : "git",
+        "url"  : "https://github.com/azendal/neon.git"
+    },
+    "keywords": ["class", "prototype", "inheritance", "oop"]
 }
