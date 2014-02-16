@@ -1,11 +1,8 @@
 // @TODO: Make proper spec'ing and testing for these modules
 if(typeof require !== 'undefined') {
-    
     console.log("Requiring neon stdlib from file");
-    var Class = require('../lib/neon.js').Class;
-    var CustomEventSupport = require('../lib/stdlib/custom_event_support.js').CustomEventSupport;
-    var NodeSupport = require('../lib/stdlib/node_support.js').NodeSupport;
-    var BubblingSupport = require('../lib/stdlib/bubbling_support.js').BubblingSupport;
+    require('neon');
+    require('neon/stdlib');
 }
 
 console.log("CustomEvent ", typeof CustomEvent !== 'undefined');

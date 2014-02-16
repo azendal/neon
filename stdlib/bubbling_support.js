@@ -1,12 +1,4 @@
-if(typeof exports !== 'undefined') {
-    // assume we are in Node
-    var Module = require('../neon.js').Module;
-    var CustomEventSupport = require('./custom_event_support.js').CustomEventSupport;
-}
-
-(function(global) {
-
-    BubblingSupport = Module('BubblingSupport')({
+Module('BubblingSupport')({
         dispatch : function (type, data) {
             data = data || {};
             var event = CustomEventSupport.prototype.dispatch.call(this, type, data);
@@ -38,13 +30,3 @@ if(typeof exports !== 'undefined') {
             }
         }
     });
-
-    if (typeof define === 'function') {
-        define(function() {
-            return BubblingSupport;
-        });
-    } else {
-        global.BubblingSupport = BubblingSupport;
-    }
-
-}(typeof window !== 'undefined' ? window : (typeof exports !== 'undefined' ? exports : null)));
