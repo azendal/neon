@@ -13,6 +13,10 @@ Neon packs a DSL for Class creation, that helps in making programs following an 
 The philosophy is that it should not try to emulate other languages, so it preserves the JavaScript good parts,
 but with a nicer syntax to create classes that ensure interfaces and include reusable functionality as modules.
 
+== Why another Class System?
+
+As the web applications are getting more complex these times, backend and frontend engineers work has fusioned, and they need to be able to establish a common language. It was created for people coming from OOP languages like Ruby to Javascript.
+
 === Usage
 
     Interface('Editable')({

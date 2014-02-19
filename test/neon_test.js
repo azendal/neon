@@ -1,15 +1,9 @@
 if(typeof require !== 'undefined') { // We are in Node, need to require the file
 
     console.log("Requiring neon from file");
-    var Neon = require('../neon.js');
-    console.log(Neon);
-
+    require('neon');
     // In Coffeescript, the following construct is recommended
     // { Class, Module, Interface } = require('neon')
-
-    var Class = Neon.Class;
-    var Module = Neon.Module;
-    var Interface = Neon.Interface;
 }
 
 
