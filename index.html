@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Neon.js</title>
     <!-- favicon -->
-    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=277c" />
+    <link rel="icon" type="image/gif" href="assets/img/favicon.gif?nocache=d848" />
     <!-- cdn -->
     
     <!-- css -->
@@ -741,14 +741,61 @@ parentNode.children[<span class="number">0</span>];
 
         <div class="stdlib-content stdlib-widget">
             <h2>Widget<span>.js</span></h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, modi, perferendis, rem, maxime tempore hic veritatis itaque error consequuntur dolor facilis quos minus inventore et officia a cum iusto tenetur.</p>
-<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\n//TODO: Real code\nmyMethod : function(params) {\n    ParentClass.prorotype.myMethod.call(this, params);\n}\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
-<span class="comment">//TODO: Real code</span>
-myMethod : <span class="keyword">function</span>(params) {
-    ParentClass.prorotype.myMethod.call(<span class="keyword">this</span>, params);
-}
+
+<p>
+Widget is the Core Class that encapsulates all the basic behaviour of a "Widget".
+You should inherit from this class to create your own widgets with specialized functionalities.
+This way you ensure that all your widgets are consistent and respond to the same api.
+<p>
+
+<p>
+The main idea behind constructing a new widget toolkit instead of using one of the many high quality widget
+toolkits avaliable is that we considered that currently, no widget system provides all the features that where
+required for this project.
+</p>
+
+Features of the widget system:
+
+<ol>
+<li> A custom and easy to handle event binding, dispatching and manipulation, with some sort of bubbling support </li>
+<li> A module system which we can use to include specific behaviour to any widget and reuse the code where needed </li>
+<li> A tree structure support for the widgets that the event system could bubble, and that also serves as </li>
+<li> A navigation system. </li>
+<li> The widgets must be able to be grouped to form more complex widgets </li>
+<li> Remove the complexity of DOM manipulation and handling </li>
+<li> A way to wrap widgets at our convenience to reuse widgets avaliable and make them comly to our needs without the need to hack those widgets, that would force us to maintain the new versions of those widgets and that is a very complex task when widgets become so complex. </li>
+<li> A widget system that would allow us to start wrapping some widgets for a fast start and later code our own widgets at will. </li>
+<li> expose a consistent API that allow us to choose the use of widgets by API calls and user interaction at will and with the same clearance and capacity </li>
+<li> an easy way to allow subclasing widgets </li>
+<li> an easy way to provide new html, class, and css for a specific instance of a widget that would remove us the need to create complex inheritance structures that are hard to maintain. </li>
+</ol>
+
+<h3>Usage Example</h3>
+
+<p>
+The most basic usage of a widget is to simply create an instance and render it at a target element
+in this case body:
+</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nvar myWidgetInstance = new Breezi.Widget();\nmyWidgetInstance.render(document.body);\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+<span class="keyword">var</span> myWidgetInstance = <span class="keyword">new</span> Breezi.Widget();
+myWidgetInstance.render(document.body);
+</code></pre></div>
+
+<p>
+like this widget does renders does not display anything so lets give it something to display first:
+</p>
+
+<div class="code-highlight">                  <div class="button code-copy" data-clipboard-text="\nvar myWidgetInstance = new Breezi.Widget();\nmyWidgetInstance.element.html(&amp;squ;Im a simple widget&amp;squ;);\nmyWidgetInstance.render(document.body);\n\n" ><i class="icon icon-copy"></i><div class="label">copy</div><div class="shade"></div></div>        <pre><code class="javascript">
+<span class="keyword">var</span> myWidgetInstance = <span class="keyword">new</span> Breezi.Widget();
+myWidgetInstance.element.html(<span class="string">'Im a simple widget'</span>);
+myWidgetInstance.render(document.body);
 
 </code></pre></div>
+
+this reveals that internally every widget has an element property that is initialized by default to a jQuery Instance
+this allow easy DOM manipulation, animation and operations handled by a high quality third party library.
+
         </div>
     </div>
 </div> <!-- stdlib-tabs -->
