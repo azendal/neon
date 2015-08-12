@@ -4,7 +4,7 @@ Module('NodeSupport')({
 
         children    : [],
 
-        appendChild : function(child) {
+        appendChild : function appendChild(child) {
             if(child.parent) {
                 child.parent.removeChild(child);
             }
@@ -19,7 +19,7 @@ Module('NodeSupport')({
             return child;
         },
 
-        insertBefore : function (child, beforeChild) {
+        insertBefore : function insertBefore(child, beforeChild) {
             var position;
 
             if (child.parent) {
@@ -44,7 +44,7 @@ Module('NodeSupport')({
 
         },
 
-        insertChild : function(child, position) {
+        insertChild : function insertChild(child, position) {
             console.warn('NodeSupport insertChild method is deprecated, try insertBefore');
 
             if (child.parent) {
@@ -68,7 +68,7 @@ Module('NodeSupport')({
             return child;
         },
 
-        removeChild : function (child) {
+        removeChild : function removeChild(child) {
             var position = this.children.indexOf(child);
 
             if (position !== -1) {
@@ -80,12 +80,12 @@ Module('NodeSupport')({
             return child;
         },
 
-        setParent   : function (parent) {
+        setParent : function setParent(parent) {
             this.parent = parent;
             return this;
         },
 
-        getDescendants : function () {
+        getDescendants : function getDescendants() {
             var nodes = [];
             this.children.forEach(function (node) {
                 nodes.push(node);
@@ -96,7 +96,7 @@ Module('NodeSupport')({
             return nodes;
         },
 
-        getPreviousSibling : function () {
+        getPreviousSibling : function getPreviousSibling() {
             if (typeof this.parent === 'undefined') {
                 return;
             }
@@ -108,7 +108,7 @@ Module('NodeSupport')({
             return this.parent.children[ this.parent.children.indexOf(this) - 1 ];
         },
 
-        getNextSibling : function () {
+        getNextSibling : function getNextSibling() {
             if (typeof this.parent === 'undefined') {
                 return;
             }

@@ -2,7 +2,7 @@ Module('CustomEventSupport')({
 
     eventListeners : null,
 
-    bind : function(type, eventHandler) {
+    bind : function bind(type, eventHandler) {
         var found, i, listeners;
 
         if(!this.eventListeners) {
@@ -30,7 +30,7 @@ Module('CustomEventSupport')({
         return this;
     },
 
-    unbind : function(type, eventHandler) {
+    unbind : function unbind(type, eventHandler) {
         var i, found, listeners;
 
         found  = false;
@@ -58,7 +58,7 @@ Module('CustomEventSupport')({
         return this;
     },
 
-    dispatch : function(type, data) {
+    dispatch : function dispatch(type, data) {
             var event, listeners, instance, i;
 
             if (this.eventListeners === null) {
@@ -91,7 +91,7 @@ Module('CustomEventSupport')({
 
         eventListeners : null,
 
-        bind : function(type, eventHandler) {
+        bind : function bind(type, eventHandler) {
             var found, i, listeners;
 
             if(!this.eventListeners) {
@@ -119,7 +119,7 @@ Module('CustomEventSupport')({
             return this;
         },
 
-        unbind : function(type, eventHandler) {
+        unbind : function unbind(type, eventHandler) {
             var i, found, listeners;
 
             found = false;
@@ -148,7 +148,7 @@ Module('CustomEventSupport')({
             return this;
         },
 
-        dispatch : function(type, data) {
+        dispatch : function dispatch(type, data) {
             var event, listeners, instance, i;
 
             if (this.eventListeners === null) {

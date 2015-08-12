@@ -56,7 +56,7 @@ global.Module = function Module(nameOrNameSpace, name) {
 
              return this;
          }
-    }
+    };
     
     factory = function(definition){
         var property;
