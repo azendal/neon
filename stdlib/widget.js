@@ -2,7 +2,7 @@
 Base Class from which almost all widgets are based overall the project
 
 The main idea behind constructing a new widget toolkit instead of using one of the many high quality widget
-toolkits avaliable is that we considered that currently, no widget system provides all the features that where
+toolkits available is that we considered that currently, no widget system provides all the features that where
 required for this project.
 
 Features of the widget system
@@ -12,7 +12,7 @@ Features of the widget system
 * A navigation system.
 * The widgets must be able to be grouped to form more complex widgets
 * Remove the complexity of DOM manipulation and handling
-* A way to wrap widgets at our convenience to reuse widgets avaliable and make them comly to our needs
+* A way to wrap widgets at our convenience to reuse widgets available and make them commonly to our needs
 without the need to hack those widgets, that would force us to maintain the new versions of those widgets
 and that is a very complex task when widgets become so complex.
 * A widget system that would allow us to start wrapping some widgets for a fast start and later code our own widgets
@@ -27,18 +27,17 @@ Usage Example.
 
 The most basic usage of a widget is to simply create an instance and render it at a target element
 in this case body
-var myWidgetInstance = new Breezi.Widget();
+var myWidgetInstance = new Widget();
 myWidgetInstance.render(document.body);
 
 like this widget does renders does not display anything so lets give it something to display first
-var myWidgetInstance = new Breezi.Widget();
+var myWidgetInstance = new Widget();
 myWidgetInstance.element.html('Im a simple widget');
 myWidgetInstance.render(document.body);
 
 this reveals that internally every widget has an element property that is initialized by default to a jQuery Instance
 this allow easy DOM manipulation, animation and operations handled by a high quality third party library.
 @class Widget
-@namespace Breezi
 @inlcudes CustomEventSupport
 @includes NodeSupport
 @dependency Neon
@@ -298,7 +297,7 @@ Class('Widget').includes(CustomEventSupport, NodeSupport)({
         of the setup of a widget, including appending its children. this is
         because once a widget gets renderer, further operations cause browser
         reflows, and DOM operations are slower than memory operations.
-        This method shoudl not be replaced by its children.
+        This method should not be replaced by its children.
         @property render <public> [Function]
         @method
         @argument element <required> [JQuery] (undefined) This is the element
