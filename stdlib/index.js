@@ -1,7 +1,7 @@
-// This file is node only
-if(typeof require !== 'undefined'){
-    require('./custom_event');
-    require('./custom_event_support');
-    require('./node_support');
-    require('./bubbling_support');
-}
+module.exports = {
+  ...require('./custom_event.js'),
+  ...require('./custom_event_support.js'),
+  ...require('./node_support.js'),
+  ...require('./bubbling_support.js'),
+  ...require('./widget.js')
+};

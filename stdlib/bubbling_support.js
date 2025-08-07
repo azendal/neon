@@ -1,4 +1,7 @@
-Module('BubblingSupport')({
+const { Module } = require('../neon.js');
+const { CustomEventSupport } = require('./custom_event_support.js');
+
+const BubblingSupport = Module('BubblingSupport')({
         dispatch : function (type, data) {
             data = data || {};
             var event = CustomEventSupport.prototype.dispatch.call(this, type, data);
@@ -30,3 +33,7 @@ Module('BubblingSupport')({
             }
         }
     });
+
+module.exports = {
+  BubblingSupport: BubblingSupport
+};

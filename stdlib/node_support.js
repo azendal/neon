@@ -1,4 +1,6 @@
-Module('NodeSupport')({
+const { Module } = require('../neon.js');
+
+const NodeSupport = Module('NodeSupport')({
     prototype : {
         parent      : null,
 
@@ -121,3 +123,7 @@ Module('NodeSupport')({
         }
     }
 });
+
+module.exports = {
+  NodeSupport: NodeSupport
+};

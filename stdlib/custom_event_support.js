@@ -1,4 +1,7 @@
-Module('CustomEventSupport')({
+const { Module } = require('../neon.js');
+const { CustomEvent } = require('./custom_event.js');
+
+const CustomEventSupport = Module('CustomEventSupport')({
 
     eventListeners : null,
 
@@ -178,3 +181,7 @@ Module('CustomEventSupport')({
         }
     }
 });
+
+module.exports = {
+  CustomEventSupport: CustomEventSupport
+};

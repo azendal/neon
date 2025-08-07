@@ -1,14 +1,40 @@
 {
-    "name"        : "neon",
-    "version"     : "2.0.0",
-    "description" : "Javascript DSL for Classical Inheritance",
-    "main"        : "./neon",
-    "directories" : {
-        "lib" : "./lib"
+    "name": "neon",
+    "version": "2.0.0",
+    "description": "Javascript DSL for Classical Inheritance",
+    "main": "./neon",
+    "directories": {
+        "test": "test"
     },
     "repository": {
-        "type" : "git",
-        "url"  : "https://github.com/azendal/neon.git"
+        "type": "git",
+        "url": "git+https://github.com/azendal/neon.git"
     },
-    "keywords": ["class", "prototype", "inheritance", "oop"]
+    "keywords": [
+        "class",
+        "prototype",
+        "inheritance",
+        "oop"
+    ],
+    "scripts": {
+        "test": "jest",
+        "lint": "eslint .",
+        "build": "webpack"
+    },
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "bugs": {
+        "url": "https://github.com/azendal/neon/issues"
+    },
+    "homepage": "https://github.com/azendal/neon#readme",
+    "devDependencies": {
+        "eslint": "^9.32.0",
+        "jest": "^30.0.5",
+        "webpack": "^5.101.0",
+        "webpack-cli": "^6.0.1"
+    },
+    "dependencies": {
+        "jquery": "^3.7.1"
+    }
 }
