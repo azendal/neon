@@ -42,3 +42,44 @@ Neon.Class()({}); // Anonymous class
 
 console.log(Object.keys(Neon.classes)); // Still ['MyClass', 'AnotherClass']
 ```
+
+## Inspecting a Complex Class
+
+The introspection API is particularly useful when dealing with complex classes that use inheritance, modules, and interfaces. Let's consider a `Student` class that inherits from `Person`, includes a `Greeter` module, and ensures a `Runnable` interface.
+
+```javascript
+const Neon = require('neon-js');
+
+// Define the building blocks
+Neon.Class('Person')({});
+Neon.Module('Greeter')({});
+Neon.Interface('Runnable')({ prototype: ['run'] });
+
+// Create the complex class
+const Student = Neon.Class('Student')
+  .inherits(Neon.classes.Person)
+  .includes(Neon.modules.Greeter)
+  .ensures(Neon.interfaces.Runnable)
+  ({
+    prototype: {
+      run: function() {}
+    }
+  });
+```
+
+Now, we can use the introspection API to inspect the `Student` class:
+
+```javascript
+const StudentClass = Neon.classes.Student;
+
+// Check superclass
+console.log(StudentClass.superClass === Neon.classes.Person); // true
+
+// Check included modules
+console.log(StudentClass.__includedModules.includes(Neon.modules.Greeter)); // true
+
+// Check implemented interfaces
+console.log(StudentClass.__implementedInterfaces.includes(Neon.interfaces.Runnable)); // true
+```
+
+This example demonstrates how you can programmatically access the relationships between your classes, modules, and interfaces, which can be very powerful for building developer tools, visualizations, or validation libraries on top of Neon.js.
