@@ -45,41 +45,50 @@ console.log(Object.keys(Neon.classes)); // Still ['MyClass', 'AnotherClass']
 
 ## Inspecting a Complex Class
 
-The introspection API is particularly useful when dealing with complex classes that use inheritance, modules, and interfaces. Let's consider a `Student` class that inherits from `Person`, includes a `Greeter` module, and ensures a `Runnable` interface.
+The introspection API allows you to inspect the relationships between your classes, modules, and interfaces.
+
+### Inspecting Inheritance
+
+You can check the superclass of a class using the `superClass` property.
 
 ```javascript
 const Neon = require('neon-js');
 
-// Define the building blocks
 Neon.Class('Person')({});
-Neon.Module('Greeter')({});
-Neon.Interface('Runnable')({ prototype: ['run'] });
+const Student = Neon.Class('Student').inherits(Neon.classes.Person)({});
 
-// Create the complex class
-const Student = Neon.Class('Student')
-  .inherits(Neon.classes.Person)
-  .includes(Neon.modules.Greeter)
-  .ensures(Neon.interfaces.Runnable)
-  ({
-    prototype: {
-      run: function() {}
-    }
-  });
+const StudentClass = Neon.classes.Student;
+console.log(StudentClass.superClass === Neon.classes.Person); // true
 ```
 
-Now, we can use the introspection API to inspect the `Student` class:
+### Inspecting Included Modules
+
+You can see which modules a class includes by looking at the `__includedModules` array.
 
 ```javascript
-const StudentClass = Neon.classes.Student;
+const Neon = require('neon-js');
 
-// Check superclass
-console.log(StudentClass.superClass === Neon.classes.Person); // true
+Neon.Module('Greeter')({});
+const MyClass = Neon.Class('MyClass').includes(Neon.modules.Greeter)({});
 
-// Check included modules
-console.log(StudentClass.__includedModules.includes(Neon.modules.Greeter)); // true
-
-// Check implemented interfaces
-console.log(StudentClass.__implementedInterfaces.includes(Neon.interfaces.Runnable)); // true
+const MyClass_ = Neon.classes.MyClass;
+console.log(MyClass_.__includedModules.includes(Neon.modules.Greeter)); // true
 ```
 
-This example demonstrates how you can programmatically access the relationships between your classes, modules, and interfaces, which can be very powerful for building developer tools, visualizations, or validation libraries on top of Neon.js.
+### Inspecting Implemented Interfaces
+
+You can check which interfaces a class implements by looking at the `__implementedInterfaces` array.
+
+```javascript
+const Neon = require('neon-js');
+
+Neon.Interface('Runnable')({ prototype: ['run'] });
+const MyClass = Neon.Class('MyClass').ensures(Neon.interfaces.Runnable)({
+  prototype: {
+    run: function() {}
+  }
+});
+
+const MyClass_ = Neon.classes.MyClass;
+console.log(MyClass_.__implementedInterfaces.includes(Neon.interfaces.Runnable)); // true
+```
