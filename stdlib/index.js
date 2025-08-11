@@ -1,5 +1,5 @@
 module.exports = {
-  ...require('./custom_event.js'),
+  ...require('./neon_custom_event.js'),
   ...require('./custom_event_support.js'),
   ...require('./node_support.js'),
   ...require('./bubbling_support.js'),
