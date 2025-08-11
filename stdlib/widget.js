@@ -1,7 +1,6 @@
 const { Class } = require('../neon.js');
 const { CustomEventSupport } = require('./custom_event_support.js');
 const { NodeSupport } = require('./node_support.js');
-const $ = require('jquery');
 
 const Widget = Class('Widget').includes(CustomEventSupport, NodeSupport)({
 
@@ -45,19 +44,20 @@ const Widget = Class('Widget').includes(CustomEventSupport, NodeSupport)({
         __destroyed : false,
 
         init : function init(config) {
-            var property;
-
             Object.keys(config || {}).forEach(function (propertyName) {
                 this[propertyName] = config[propertyName];
             }, this);
 
             if (this.element == null) {
-                this.element = $(this.constructor.HTML.replace(/\s\s+/g, ''));
-                this.element.addClass(this.constructor.ELEMENT_CLASS);
+                const html = this.constructor.HTML.replace(/\s\s+/g, '');
+                const template = document.createElement('template');
+                template.innerHTML = html;
+                this.element = template.content.firstChild;
+                this.element.classList.add(this.constructor.ELEMENT_CLASS);
             }
 
             if (this.hasOwnProperty('className') === true) {
-                this.element.addClass(this.className);
+                this.element.classList.add(this.className);
             }
         },
 
@@ -69,7 +69,7 @@ const Widget = Class('Widget').includes(CustomEventSupport, NodeSupport)({
         **/
         _activate : function _activate() {
             this.active = true;
-            this.element.addClass('active');
+            this.element.classList.add('active');
         },
 
         /**
@@ -104,7 +104,7 @@ const Widget = Class('Widget').includes(CustomEventSupport, NodeSupport)({
         **/
         _deactivate : function _deactivate() {
             this.active = false;
-            this.element.removeClass('active');
+            this.element.classList.remove('active');
         },
 
         /**
@@ -139,7 +139,7 @@ const Widget = Class('Widget').includes(CustomEventSupport, NodeSupport)({
         **/
         _enable : function _enable() {
             this.disabled = false;
-            this.element.removeClass('disable');
+            this.element.classList.remove('disable');
         },
 
         /**
@@ -167,7 +167,7 @@ const Widget = Class('Widget').includes(CustomEventSupport, NodeSupport)({
         **/
         _disable : function _disable() {
             this.disabled = true;
-            this.element.addClass('disable');
+            this.element.classList.add('disable');
         },
 
         /**
@@ -259,9 +259,9 @@ const Widget = Class('Widget').includes(CustomEventSupport, NodeSupport)({
         This method should not be replaced by its children.
         @property render <public> [Function]
         @method
-        @argument element <required> [JQuery] (undefined) This is the element
+        @argument element <required> [HTMLElement] (undefined) This is the element
         into which the widget will be appended.
-        @argument beforeElement <optional> [jQuery] (undefined) this is the element
+        @argument beforeElement <optional> [HTMLElement] (undefined) this is the element
         that will be used as a reference to insert the widgets element. this argument
         must be a child of the "element" argument.
         @return this [Widget]
@@ -275,9 +275,9 @@ const Widget = Class('Widget').includes(CustomEventSupport, NodeSupport)({
                 beforeElement : beforeElement
             });
             if (beforeElement) {
-                this.element.insertBefore(beforeElement);
+                beforeElement.parentNode.insertBefore(this.element, beforeElement);
             } else {
-                this.element.appendTo(element);
+                element.appendChild(this.element);
             }
             this.dispatch('render');
             return this;
