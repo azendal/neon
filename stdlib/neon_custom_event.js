@@ -1,6 +1,6 @@
 const { Class } = require('../neon.js');
 
-const CustomEvent = Class('CustomEvent')({
+const NeonCustomEvent = Class('NeonCustomEvent')({
     prototype : {
         bubbles                       : true,
         cancelable                    : true,
@@ -39,5 +39,5 @@ const CustomEvent = Class('CustomEvent')({
 });
 
 module.exports = {
-  CustomEvent: CustomEvent
+  NeonCustomEvent: NeonCustomEvent
 };

@@ -1,5 +1,5 @@
 const { Module } = require('../neon.js');
-const { CustomEvent } = require('./custom_event.js');
+const { NeonCustomEvent } = require('./neon_custom_event.js');
 
 const CustomEventSupport = Module('CustomEventSupport')({
 
@@ -76,7 +76,7 @@ const CustomEventSupport = Module('CustomEventSupport')({
                 data.target = this;
             }
 
-            event         = new CustomEvent(type, data);
+            event         = new NeonCustomEvent(type, data);
             listeners     = this.eventListeners[type] || [];
             instance      = this;
 
@@ -166,7 +166,7 @@ const CustomEventSupport = Module('CustomEventSupport')({
                 data.target = this;
             }
 
-            event         = new CustomEvent(type, data);
+            event         = new NeonCustomEvent(type, data);
             listeners     = this.eventListeners[type] || [];
             instance      = this;
 
