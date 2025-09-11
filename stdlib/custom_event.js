@@ -1,4 +1,4 @@
-Class('CustomEvent')({
+Class('NeCustomEvent')({
     prototype : {
         bubbles                       : true,
         cancelable                    : true,

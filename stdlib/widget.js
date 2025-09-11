@@ -35,16 +35,16 @@ var myWidgetInstance = new Widget();
 myWidgetInstance.element.html('Im a simple widget');
 myWidgetInstance.render(document.body);
 
-this reveals that internally every widget has an element property that is initialized by default to a jQuery Instance
-this allow easy DOM manipulation, animation and operations handled by a high quality third party library.
+this reveals that internally every widget has an element property that is initialized by default to a DOM Element instance
+this allows direct DOM manipulation using standard JavaScript methods.
 @class Widget
-@inlcudes CustomEventSupport
+@inlcudes NeCustomEventSupport
 @includes NodeSupport
 @dependency Neon
-@dependency CustomEventSupport
+@dependency NeCustomEventSupport
 @dependency NodeSupport
 **/
-Class('Widget').includes(CustomEventSupport, NodeSupport)({
+Class('Widget').includes(NeCustomEventSupport, NodeSupport)({
 
     /**
     The default html for the widget, at the most simple case this is just a div.
@@ -93,12 +93,17 @@ Class('Widget').includes(CustomEventSupport, NodeSupport)({
             }, this);
 
             if (this.element == null) {
-                this.element = $(this.constructor.HTML.replace(/\s\s+/g, ''));
-                this.element.addClass(this.constructor.ELEMENT_CLASS);
+                var html = this.constructor.HTML.replace(/\s\s+/g, '');
+                var template = document.createElement('template');
+                template.innerHTML = html.trim();
+                this.element = template.content.firstElementChild;
+                if (this.element && this.constructor.ELEMENT_CLASS) {
+                    this.element.classList.add(this.constructor.ELEMENT_CLASS);
+                }
             }
 
-            if (this.hasOwnProperty('className') === true) {
-                this.element.addClass(this.className);
+            if (this.hasOwnProperty('className') === true && this.element) {
+                this.element.classList.add(this.className);
             }
         },
 
@@ -110,7 +115,9 @@ Class('Widget').includes(CustomEventSupport, NodeSupport)({
         **/
         _activate : function _activate() {
             this.active = true;
-            this.element.addClass('active');
+            if (this.element) {
+                this.element.classList.add('active');
+            }
         },
 
         /**
@@ -145,7 +152,9 @@ Class('Widget').includes(CustomEventSupport, NodeSupport)({
         **/
         _deactivate : function _deactivate() {
             this.active = false;
-            this.element.removeClass('active');
+            if (this.element) {
+                this.element.classList.remove('active');
+            }
         },
 
         /**
@@ -180,7 +189,9 @@ Class('Widget').includes(CustomEventSupport, NodeSupport)({
         **/
         _enable : function _enable() {
             this.disabled = false;
-            this.element.removeClass('disable');
+            if (this.element) {
+                this.element.classList.remove('disable');
+            }
         },
 
         /**
@@ -208,7 +219,9 @@ Class('Widget').includes(CustomEventSupport, NodeSupport)({
         **/
         _disable : function _disable() {
             this.disabled = true;
-            this.element.addClass('disable');
+            if (this.element) {
+                this.element.classList.add('disable');
+            }
         },
 
         /**
@@ -246,8 +259,8 @@ Class('Widget').includes(CustomEventSupport, NodeSupport)({
         _destroy : function _destroy() {
             var childrenLength;
 
-            if (this.element) {
-                this.element.remove();
+            if (this.element && this.element.parentNode) {
+                this.element.parentNode.removeChild(this.element);
             }
 
             if (this.children !== null){
@@ -300,11 +313,11 @@ Class('Widget').includes(CustomEventSupport, NodeSupport)({
         This method should not be replaced by its children.
         @property render <public> [Function]
         @method
-        @argument element <required> [JQuery] (undefined) This is the element
-        into which the widget will be appended.
-        @argument beforeElement <optional> [jQuery] (undefined) this is the element
-        that will be used as a reference to insert the widgets element. this argument
-        must be a child of the "element" argument.
+    @argument element <required> [HTMLElement] (undefined) This is the element
+    into which the widget will be appended.
+    @argument beforeElement <optional> [HTMLElement] (undefined) this is the element
+    that will be used as a reference to insert the widgets element. this argument
+    must be a child of the "element" argument.
         @return this [Widget]
         **/
         render : function render(element, beforeElement) {
@@ -315,10 +328,10 @@ Class('Widget').includes(CustomEventSupport, NodeSupport)({
                 element : element,
                 beforeElement : beforeElement
             });
-            if (beforeElement) {
-                this.element.insertBefore(beforeElement);
+            if (beforeElement && beforeElement.parentNode === element) {
+                element.insertBefore(this.element, beforeElement);
             } else {
-                this.element.appendTo(element);
+                element.appendChild(this.element);
             }
             this.dispatch('render');
             return this;

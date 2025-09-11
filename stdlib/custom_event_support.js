@@ -1,4 +1,4 @@
-Module('CustomEventSupport')({
+Module('NeCustomEventSupport')({
 
     eventListeners : null,
 
@@ -73,7 +73,7 @@ Module('CustomEventSupport')({
                 data.target = this;
             }
 
-            event         = new CustomEvent(type, data);
+                event         = new NeCustomEvent(type, data);
             listeners     = this.eventListeners[type] || [];
             instance      = this;
 
@@ -163,7 +163,7 @@ Module('CustomEventSupport')({
                 data.target = this;
             }
 
-            event         = new CustomEvent(type, data);
+            event         = new NeCustomEvent(type, data);
             listeners     = this.eventListeners[type] || [];
             instance      = this;
 

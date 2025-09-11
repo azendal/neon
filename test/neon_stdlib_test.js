@@ -5,8 +5,8 @@ if(typeof require !== 'undefined') {
     require('neon/stdlib');
 }
 
-console.log("CustomEvent ", typeof CustomEvent !== 'undefined');
-console.log("CustomEventSupport ", typeof CustomEventSupport !== 'undefined');
+console.log("NeCustomEvent ", typeof NeCustomEvent !== 'undefined');
+console.log("NeCustomEventSupport ", typeof NeCustomEventSupport !== 'undefined');
 console.log("NodeSupport ", typeof NodeSupport !== 'undefined');
 console.log("BubblingSupport ", typeof BubblingSupport !== 'undefined');
 
@@ -33,7 +33,7 @@ right.setParent(root);
 console.log(root.children.indexOf(left));
 console.log(left == right.parent.left);
 
-Class('X').includes(CustomEventSupport)({
+Class('X').includes(NeCustomEventSupport)({
     prototype : {
         init : function() {
 
@@ -54,7 +54,7 @@ sender.dispatch('alert', { message : 'TEST' });
 
 console.log('--- bubbling support');
 
-Class('BubblingTreeNode').includes(NodeSupport, CustomEventSupport, BubblingSupport)({
+Class('BubblingTreeNode').includes(NodeSupport, NeCustomEventSupport, BubblingSupport)({
     prototype : {
         init : function(name) {
             this.name = name;
