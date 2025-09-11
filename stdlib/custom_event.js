@@ -1,3 +1,18 @@
+/**
+ * @deprecated CustomEvent is deprecated and will be removed in 6 months. Use NeCustomEvent instead.
+ */
+if (typeof window !== 'undefined') {
+    window.CustomEvent = new Proxy(NeCustomEvent, {
+        construct(target, args) {
+            console.warn('DEPRECATION NOTICE: CustomEvent is deprecated and will be removed in 6 months. Use NeCustomEvent instead.');
+            return new target(...args);
+        },
+        get(target, prop, receiver) {
+            console.warn('DEPRECATION NOTICE: CustomEvent is deprecated and will be removed in 6 months. Use NeCustomEvent instead.');
+            return Reflect.get(target, prop, receiver);
+        }
+    });
+}
 Class('NeCustomEvent')({
     prototype : {
         bubbles                       : true,
