@@ -1,14 +1,14 @@
 /**
- * @deprecated CustomEventSupport is deprecated and will be removed in 6 months. Use NeCustomEventSupport instead.
+ * @deprecated CustomEventSupport is deprecated and will be removed on February 1st, 2026. Use NeCustomEventSupport instead.
  */
 if (typeof window !== 'undefined') {
     window.CustomEventSupport = new Proxy(NeCustomEventSupport, {
         construct(target, args) {
-            console.warn('DEPRECATION NOTICE: CustomEventSupport is deprecated and will be removed in 6 months. Use NeCustomEventSupport instead.');
+            console.warn('DEPRECATION NOTICE: CustomEventSupport is deprecated and will be removed on February 1st, 2026. Use NeCustomEventSupport instead.');
             return new target(...args);
         },
         get(target, prop, receiver) {
-            console.warn('DEPRECATION NOTICE: CustomEventSupport is deprecated and will be removed in 6 months. Use NeCustomEventSupport instead.');
+            console.warn('DEPRECATION NOTICE: CustomEventSupport is deprecated and will be removed on February 1st, 2026. Use NeCustomEventSupport instead.');
             return Reflect.get(target, prop, receiver);
         }
     });

@@ -1,14 +1,14 @@
 /**
- * @deprecated CustomEvent is deprecated and will be removed in 6 months. Use NeCustomEvent instead.
+ * @deprecated CustomEvent is deprecated and will be removed on February 1st, 2026. Use NeCustomEvent instead.
  */
 if (typeof window !== 'undefined') {
     window.CustomEvent = new Proxy(NeCustomEvent, {
         construct(target, args) {
-            console.warn('DEPRECATION NOTICE: CustomEvent is deprecated and will be removed in 6 months. Use NeCustomEvent instead.');
+            console.warn('DEPRECATION NOTICE: CustomEvent is deprecated and will be removed on February 1st, 2026. Use NeCustomEvent instead.');
             return new target(...args);
         },
         get(target, prop, receiver) {
-            console.warn('DEPRECATION NOTICE: CustomEvent is deprecated and will be removed in 6 months. Use NeCustomEvent instead.');
+            console.warn('DEPRECATION NOTICE: CustomEvent is deprecated and will be removed on February 1st, 2026. Use NeCustomEvent instead.');
             return Reflect.get(target, prop, receiver);
         }
     });
